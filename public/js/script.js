@@ -105,7 +105,7 @@ document
           .map((coord) => `point=${coord[1]},${coord[0]}`)
           .join(
             "&"
-          )}&profile=foot&key=cf0f52ab-ccc0-4e48-9b65-33ce473093a2&type=gpx`
+          )}&profile=foot&key=02a25f5b-a5b8-40db-8d82-78b433c0ac9d&type=gpx`
       );
 
       if (!response.ok) {
@@ -119,6 +119,8 @@ document
 
       // Parse GPX data to get coordinates
       const routeCoordinates = parseGpxData(gpxData);
+
+      console.log(routeCoordinates)
 
       // Clear existing polyline
       if (routePolyline) {
