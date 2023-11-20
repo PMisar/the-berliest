@@ -21,7 +21,9 @@ require("./config")(app);
 const capitalize = require("./utils/capitalize");
 const projectName = "the-berliest";
 
-app.locals.appTitle = `${capitalize(projectName)} created by the Berliest people`;
+app.locals.appTitle = `${capitalize(
+  projectName
+)} created by the Berliest people`;
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
@@ -29,6 +31,10 @@ app.use("/", indexRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
+
+app.get("/my-berliest", (req, res) => {
+  res.render("my-berliest");
+});
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

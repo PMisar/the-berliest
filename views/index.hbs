@@ -2,29 +2,34 @@
 <p>Welcome Berlinluver!</p>
 
 <div class="container-fluid">
-      <div class="row">
-        <!-- Dropdown menu on the left side -->
-        <div class="col-md-6">
-          <label for="categorySelect">Select Category:</label>
-          <select id="categorySelect" class="form-control">
-            <option value="all">All Places</option>
-            <option value="restaurants">Taste Explorer</option>
-            <option value="bars">Sip & Socialize</option>
-            <option value="clubs">Club Chronicles</option>
-            <option value="parties">Where is the party at tonight?</option>
-          </select>
+  <div class="row">
+    <!-- Dropdown menu on the left side -->
+    <div class="col-md-6">
+      <label for="categorySelect">Select Category:</label>
+      <select id="categorySelect" class="form-control">
+        <option value="all">All Places</option>
+        <option value="tourist">Like a real tourist</option>
+        <option value="museum">Museum</option>
+        <option value="breluncoffee">Frühstuck all day</option>
+        <option value="restaurant">Taste Explorer</option>
+        <option value="bar">Sip & Socialize</option>
+        <option value="park">A day at the park</option>
+        <option value="club">Endless dancing</option>
+        <option value="shop">Shop till you drop</option>
+        <option value="party">Where is a party at tonight?</option>
+      </select>
 
-          <h3>Selected Places</h3>
-          <ul id="selectedPlaces" class="list-group">
-            <!-- Selected places will be added dynamically here -->
-          </ul>
-          <button id="showRouteBtn" class="btn btn-primary mt-2">
-            Show Route
-          </button>
-        </div>
-        <!-- Map on the right side -->
-        <div class="col-md-6">
-          <div id="map"></div>
-        </div>
-      </div>
+      <h3>Selected Places</h3>
+      <ul id="selectedPlaces" class="list-group">
+        <!-- Selected places will be added dynamically here -->
+      </ul>
+      <button id="showRouteBtn" class="btn btn-primary mt-2">
+        Show Route
+      </button>
     </div>
+    <!-- Map on the right side -->
+    <div class="col-md-6">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+// name: "Stilbruch Kaffee",
+//     category: "Breakfast & Lunch cafe",
+//     lat: 52.508329144972556,
+//     lon: 13.453455521362487,
+
+const { Schema, model } = require("mongoose");
+
+const userSchema = new Schema(
+  {
+    name: {
+      type: String,
+      required: false,
+      unique: true,
+      trim: true,
+    },
+    category: {
+      type: String,
+      enum: [
+        "tourist",
+        "breluncoffee",
+        "restaurant",
+        "bar",
+        "club",
+        "shop",
+        "exhibition",
+        "party",
+        "park",
+        "museum",
+      ],
+      lowercase: true,
+    },
+    lat: {
+      type: Number,
+      required: true,
+    },
+    lon: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    // this second object adds extra properties: `createdAt` and `updatedAt`
+    timestamps: true,
+  }
+);
+
+const Place = model("Place", userSchema);
+
+module.exports = Place;
