@@ -1,1 +1,13 @@
 we are now at the berliest !!
+
+<ul class="total-list">
+  {{#each places}}
+    <li class="place">
+      {{this.name}}
+      <br />
+      <p>{{this.category}}</p>
+      <br />
+      <p>{{this.lon}}</p>
+    </li>
+  {{/each}}
+</ul>
