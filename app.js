@@ -42,9 +42,9 @@ app.get("/my-berliest", (req, res) => {
   res.render("my-berliest");
 });
 
-app.get("/create-list", (req, res) => {
-  res.render("create-list");
-});
+// app.get("/create-list", (req, res) => {
+//   res.render("create-list");
+// });
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
