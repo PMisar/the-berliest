@@ -52,6 +52,8 @@
   </ul>
 </p>
 
+{{user.favoriteList}}
+
 <!-- Save list form -->
 <div class="saveListFormContainer">
   <h2>Save Your List</h2>
@@ -65,16 +67,3 @@
     <button type="submit">Save List</button>
   </form>
 </div>
-
-<script>
-  document.getElementById("saveListForm").addEventListener("submit", function
-  (event) { event.preventDefault(); const listName =
-  document.getElementById("listName").value; const selectedPlaces =
-  JSON.parse(localStorage.getItem("selectedPlaces")) || [];
-  fetch('/create-list/save-list', { method: 'POST', headers: { 'Content-Type':
-  'application/json', }, body: JSON.stringify({ name: listName, places:
-  selectedPlaces }), }) .then(response => { if (!response.ok) { throw new
-  Error('Network response was not ok'); } return response.json(); }) .then(data
-  => { alert(data.message); }) .catch(error => { console.error('Error saving
-  list:', error); alert('Failed to save list. Please try again.'); }); });
-</script>
