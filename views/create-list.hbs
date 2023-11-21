@@ -31,40 +31,36 @@
 <ul id="selectedPlaces" class="list-group">
   <!-- Handlebars will dynamically populate this list -->
 </ul>
-
-<p>
+<div class ="row">
+<div class="col-md-4">
+  <h2>Pick all your places</h2>
+<p>Click on the place to <strong>add</strong> them to your favorites</p>
   <ul class="places-list">
     {{#each places}}
       <li class="place">
-        Place:
-        {{this.name}}
-        Category:
-        {{this.category}}
-
         <form action="/add-to-list" method="post">
-
-          <button type="submit" class="btn btn-dark">+</button>
-          <input type="hidden" name="name" value={{this.name}} />
-
+        <input type="hidden" name="name" value="{{this.name}}"" />
+          <button type="submit" class="btn btn-dark">
+        {{this.name}}</button>
         </form>
-      </li>
+        </li>
     {{/each}}
   </ul>
 </p>
-
-User:
-{{username}}
-Favorites
-<ul>
+</div>
+<div class="col-md-4">
+<h2>{{username}}'s' Berliest places</h2>
+<p>Click on the place to <strong>remove</strong> them from your Berliest</p>
+<ul class="favorites-list">
   {{#each favorites}}
-    <li>{{this}}
+    
       <form action="/remove-from-list" method="post">
-        <button type="submit" class="btn btn-dark">-</button>
-        <input type="hidden" name="name" value={{this}} />
+        <button type="submit" class="btn btn-dark"><li>{{this}}</li></button>
+        <input type="hidden" name="name" value="{{this}}" />
 
       </form>
 
-    </li>
+    
   {{/each}}
 </ul>
 
@@ -80,4 +76,6 @@ Favorites
     />
     <button type="submit">Save List</button>
   </form>
+</div>
+</div>
 </div>
