@@ -31,95 +31,36 @@
 <ul id="selectedPlaces" class="list-group">
   <!-- Handlebars will dynamically populate this list -->
 </ul>
-
-<form action="">
-  {{value}}
-  <div class="container mt-3">
-
-    <div class="dropdown">
-      <button
-        type="submit"
-        class="btn btn-dark dropdown-toggle"
-        data-toggle="dropdown"
-      >
-        Search
-      </button>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Breluncoffee</a>
-        <a class="dropdown-item" href="#">Bar</a>
-        <a class="dropdown-item" href="#">Shop</a>
-        <a class="dropdown-item" href="#">Exhibition</a>
-        <a class="dropdown-item" href="#">Restaurant</a>
-        <a class="dropdown-item" href="#">Tourist</a>
-        <a class="dropdown-item" href="#">Museum</a>
-        <a class="dropdown-item" href="#">Park</a>
-      </div>
-    </div>
-  </div>
-</form>
-
-<script>
-  // Function to filter and update the places list based on the selected
-  category function updatePlacesList() { const selectedCategory =
-  document.getElementById("categorySelect").value; const places =
-  document.querySelectorAll('.places-list .place'); places.forEach(place => {
-  const category = place.querySelector('.category').textContent.trim(); // Show
-  or hide the place based on the selected category if (selectedCategory ===
-  'all' || category === selectedCategory) { place.classList.remove('hidden'); }
-  else { place.classList.add('hidden'); } }); } // Event listener for the
-  category dropdown change
-  document.getElementById("categorySelect").addEventListener("change",
-  updatePlacesList); // ... (your existing code) ...
-</script>
-
-<ul class="places-list">
-  {{#each places}}
-    <li class="place">
-      Place:
-      {{this.name}}
-      Category:
-      <span class="category">{{this.category}}</span>
-      <form action="/add-to-list" method="post">
-        <button type="submit">Add</button>
-        <input type="hidden" name="name" value={{this.name}} />
-      </form>
-    </li>
-  {{/each}}
-</ul>
-
-{{!-- <p>
+<div class ="row">
+<div class="col-md-4">
+  <h2>Pick all your places</h2>
+<p>Click on the place to <strong>add</strong> them to your favorites</p>
   <ul class="places-list">
     {{#each places}}
       <li class="place">
-        Place:
-        {{this.name}}
-        Category:
-        {{this.category}}
-
         <form action="/add-to-list" method="post">
-
-          <button type="submit" class="btn btn-dark">+</button>
-          <input type="hidden" name="name" value={{this.name}} />
-
+        <input type="hidden" name="name" value="{{this.name}}"" />
+          <button type="submit" class="btn btn-dark">
+        {{this.name}}</button>
         </form>
-      </li>
+        </li>
     {{/each}}
   </ul>
-</p> --}}
-
-User:
-{{username}}
-Favorites
-<ul>
+</p>
+</div>
+<div class="col-md-4">
+<h2>{{username}}'s' Berliest places</h2>
+<p>Click on the place to <strong>remove</strong> them from your Berliest</p>
+<ul class="favorites-list">
   {{#each favorites}}
-    <li>{{this}}
+    
       <form action="/remove-from-list" method="post">
-        <button type="submit" class="btn btn-dark">-</button>
-        <input type="hidden" name="name" value={{this}} />
+        <button type="submit" class="btn btn-dark"><li>{{this}}</li></button>
+        <input type="hidden" name="name" value="{{this}}" />
 
       </form>
 
-    </li>
+    
   {{/each}}
 </ul>
 
@@ -135,4 +76,6 @@ Favorites
     />
     <button type="submit">Save List</button>
   </form>
+</div>
+</div>
 </div>

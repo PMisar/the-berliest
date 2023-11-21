@@ -6,7 +6,7 @@ const fs = require("fs");
 
 router.post("/add-to-list", (req, res) => {
   const { name } = req.body;
-  // console.log("NAME", name);
+  console.log(req.body.name);
 
   User.findByIdAndUpdate(
     req.session.currentUser._id,
@@ -14,7 +14,7 @@ router.post("/add-to-list", (req, res) => {
     { new: true }
   )
     .then((user) => {
-      // console.log("USER", user);
+      //   console.log(user.favoriteList);
       res.redirect("create-list");
       // res.render("create-list", { favoriteList: user.favoriteList });
     })
@@ -46,12 +46,11 @@ router.post("/remove-from-list", (req, res) => {
 
 router.get("/create-list", (req, res) => {
   const placesFilePath = path.join(__dirname, "../db/data-places.json");
-  // console.log("I AM THIS USER =", req.session.currentUser._id);
 
   User.findById(req.session.currentUser._id)
     .then((user) => {
-      // console.log(user.favoriteList);
-      //
+      let favorites = user.favoriteList;
+      console.log(favorites);
 
       fs.readFile(placesFilePath, "utf8", (err, data) => {
         if (err) {
@@ -61,9 +60,13 @@ router.get("/create-list", (req, res) => {
 
         const places = JSON.parse(data); // Parse JSON data
 
+        const filteredPlaces = places.filter(
+          (place) => !favorites.includes(place.name)
+        );
+
         res.render("create-list", {
-          places: places,
-          favorites: user.favoriteList,
+          places: filteredPlaces,
+          favorites: favorites,
           username: user.username,
         }); // Pass places data to the template
         // res.send(places);
