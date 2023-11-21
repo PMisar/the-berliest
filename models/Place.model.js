@@ -1,8 +1,3 @@
-// name: "Stilbruch Kaffee",
-//     category: "Breakfast & Lunch cafe",
-//     lat: 52.508329144972556,
-//     lon: 13.453455521362487,
-
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
