@@ -52,7 +52,14 @@
   </ul>
 </p>
 
-{{user.favoriteList}}
+User:
+{{username}}
+Favorites
+<ul>
+  {{#each favorites}}
+    <li>{{this}}</li>
+  {{/each}}
+</ul>
 
 <!-- Save list form -->
 <div class="saveListFormContainer">

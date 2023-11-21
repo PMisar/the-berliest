@@ -21,20 +21,4 @@ const router = express.Router();
 const path = require("path");
 const fs = require("fs");
 
-router.get("/create-list", (req, res) => {
-  const placesFilePath = path.join(__dirname, "../db/data-places.json");
-
-  fs.readFile(placesFilePath, "utf8", (err, data) => {
-    if (err) {
-      console.error("Error reading places JSON file:", err);
-      return res.status(500).send("Internal Server Error");
-    }
-
-    const places = JSON.parse(data); // Parse JSON data
-
-    res.render("create-list", { places: places }); // Pass places data to the template
-    // res.send(places);
-  });
-});
-
 module.exports = router;
