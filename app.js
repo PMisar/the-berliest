@@ -32,6 +32,12 @@ app.use("/", indexRoutes);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 
+const listRoutes = require("./routes/list.routes");
+app.use("/", listRoutes); // you are listening to this route
+
+const addToList = require("./routes/add-to-list");
+app.use("/", addToList);
+
 app.get("/my-berliest", (req, res) => {
   res.render("my-berliest");
 });

@@ -32,6 +32,26 @@
   <!-- Handlebars will dynamically populate this list -->
 </ul>
 
+<p>
+  <ul class="places-list">
+    {{#each places}}
+      <li class="place">
+        Place:
+        {{this.name}}
+        Category:
+        {{this.category}}
+
+        <form action="/add-to-list" method="post">
+
+          <button type="submit">Add</button>
+          <input type="hidden" name="name" value={{this.name}} />
+
+        </form>
+      </li>
+    {{/each}}
+  </ul>
+</p>
+
 <!-- Save list form -->
 <div class="saveListFormContainer">
   <h2>Save Your List</h2>
