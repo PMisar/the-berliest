@@ -43,7 +43,7 @@
 
         <form action="/add-to-list" method="post">
 
-          <button type="submit">Add</button>
+          <button type="submit" class="btn btn-dark">+</button>
           <input type="hidden" name="name" value={{this.name}} />
 
         </form>
@@ -57,7 +57,14 @@ User:
 Favorites
 <ul>
   {{#each favorites}}
-    <li>{{this}}</li>
+    <li>{{this}}
+      <form action="/remove-from-list" method="post">
+        <button type="submit" class="btn btn-dark">-</button>
+        <input type="hidden" name="name" value={{this}} />
+
+      </form>
+
+    </li>
   {{/each}}
 </ul>
 
