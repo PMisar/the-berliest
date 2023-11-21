@@ -1,1 +1,15 @@
-we are now at the berliest !!
+<!-- my-berliest.hbs -->
+Favorite List
+<ul>
+  {{#each favorites}}
+    <li>{{this}}</li>
+  {{/each}}
+
+  {{#each coordinates}}
+    <li>Name: {{this.name}}, Lat: {{this.lat}}, Lon: {{this.lon}}</li>
+  {{/each}}
+</ul>
+
+<div class="col-md-6">
+  <div id="map"></div>
+</div>
