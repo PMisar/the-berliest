@@ -32,7 +32,62 @@
   <!-- Handlebars will dynamically populate this list -->
 </ul>
 
-<p>
+<form action="">
+  {{value}}
+  <div class="container mt-3">
+
+    <div class="dropdown">
+      <button
+        type="submit"
+        class="btn btn-dark dropdown-toggle"
+        data-toggle="dropdown"
+      >
+        Search
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Breluncoffee</a>
+        <a class="dropdown-item" href="#">Bar</a>
+        <a class="dropdown-item" href="#">Shop</a>
+        <a class="dropdown-item" href="#">Exhibition</a>
+        <a class="dropdown-item" href="#">Restaurant</a>
+        <a class="dropdown-item" href="#">Tourist</a>
+        <a class="dropdown-item" href="#">Museum</a>
+        <a class="dropdown-item" href="#">Park</a>
+      </div>
+    </div>
+  </div>
+</form>
+
+<script>
+  // Function to filter and update the places list based on the selected
+  category function updatePlacesList() { const selectedCategory =
+  document.getElementById("categorySelect").value; const places =
+  document.querySelectorAll('.places-list .place'); places.forEach(place => {
+  const category = place.querySelector('.category').textContent.trim(); // Show
+  or hide the place based on the selected category if (selectedCategory ===
+  'all' || category === selectedCategory) { place.classList.remove('hidden'); }
+  else { place.classList.add('hidden'); } }); } // Event listener for the
+  category dropdown change
+  document.getElementById("categorySelect").addEventListener("change",
+  updatePlacesList); // ... (your existing code) ...
+</script>
+
+<ul class="places-list">
+  {{#each places}}
+    <li class="place">
+      Place:
+      {{this.name}}
+      Category:
+      <span class="category">{{this.category}}</span>
+      <form action="/add-to-list" method="post">
+        <button type="submit">Add</button>
+        <input type="hidden" name="name" value={{this.name}} />
+      </form>
+    </li>
+  {{/each}}
+</ul>
+
+{{!-- <p>
   <ul class="places-list">
     {{#each places}}
       <li class="place">
@@ -50,7 +105,7 @@
       </li>
     {{/each}}
   </ul>
-</p>
+</p> --}}
 
 <!-- Save list form -->
 <div class="saveListFormContainer">
@@ -67,8 +122,8 @@
 </div>
 
 <script>
-  document.getElementById("saveListForm").addEventListener("submit", function
-  (event) { event.preventDefault(); const listName =
+  document.getElementById("saveListForm").addEventListener("submit",
+  function(event) { event.preventDefault(); const listName =
   document.getElementById("listName").value; const selectedPlaces =
   JSON.parse(localStorage.getItem("selectedPlaces")) || [];
   fetch('/create-list/save-list', { method: 'POST', headers: { 'Content-Type':
