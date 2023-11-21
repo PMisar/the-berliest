@@ -22,7 +22,7 @@ const path = require("path");
 const fs = require("fs");
 
 router.get("/create-list", (req, res) => {
-  const placesFilePath = path.join(__dirname, "../public/js/data-places.json");
+  const placesFilePath = path.join(__dirname, "../db/data-places.json");
 
   fs.readFile(placesFilePath, "utf8", (err, data) => {
     if (err) {
