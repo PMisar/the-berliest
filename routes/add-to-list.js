@@ -75,4 +75,43 @@ router.get("/create-list", (req, res) => {
       res.status(404).send("USER NOT FOUND");
     });
 });
+
+
+router.get("/my-berliest", (req, res) => {
+  const placesFilePath = path.join(__dirname, "../db/data-places.json");
+  // console.log("I AM THIS USER =", req.session.currentUser._id);
+
+  User.findById(req.session.currentUser._id)
+    .then((user) => {
+      fs.readFile(placesFilePath, "utf8", (err, data) => {
+        if (err) {
+          console.error("Error reading places JSON file:", err);
+          return res.status(500).send("Internal Server Error");
+        }
+
+        const places = JSON.parse(data);
+
+        const favoritesWithCoords = user.favoriteList.map((favorite) => {
+          const place = places.find((p) => p.name === favorite);
+
+          return {
+            name: favorite,
+            lat: place ? place.lat : null,
+            lon: place ? place.lon : null,
+          };
+        });
+
+        res.render("my-berliest", {
+          favorites: user.favoriteList,
+          coordinates: favoritesWithCoords
+        }); 
+      });
+
+    })
+    .catch(() => {
+      res.status(404).send("USER NOT FOUND");
+    });
+});
+
+
 module.exports = router;
