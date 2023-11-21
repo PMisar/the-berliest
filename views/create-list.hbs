@@ -1,28 +1,60 @@
 <!-- Show all curated places in a list -->
-<div class="places-list">
-  <h2>Curated Places</h2>
-  <input type="text" id="filter" placeholder="Filter places..." />
-  <ul id="places">
-    <!-- JavaScript will populate this list -->
-  </ul>
-</div>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Dropdown menu on the left side -->
+    <div class="col-md-6">
+      <label for="categorySelect">Select Category:</label>
+      <select id="categorySelect" class="form-control">
+        <option value="all">All Places</option>
+        <option value="tourist">Like a real tourist</option>
+        <option value="museum">Museum</option>
+        <option value="breluncoffee">Frühstuck all day</option>
+        <option value="restaurant">Taste Explorer</option>
+        <option value="bar">Sip & Socialize</option>
+        <option value="park">A day at the park</option>
+        <option value="club">Endless dancing</option>
+        <option value="shop">Shop till you drop</option>
+        <option value="party">Where is a party at tonight?</option>
+      </select>
 
-<!-- Map to display selected places -->
-<div id="map" style="height: 400px;"></div>
-
-<!-- List of selected places -->
-<div class="selected-places">
-  <h2>Selected Places</h2>
-  <ul id="selected-places">
-    <!-- JavaScript will populate this list -->
-  </ul>
+      <h3>Selected Places</h3>
+      <ul id="selectedPlaces" class="list-group">
+        <!-- Selected places will be added dynamically here -->
+      </ul>
+    </div>
+    <!-- Map on the right side -->
+    <div class="col-md-6">
+      <div id="map"></div>
+    </div>
+  </div>
 </div>
+<ul id="selectedPlaces" class="list-group">
+  <!-- Handlebars will dynamically populate this list -->
+</ul>
 
 <!-- Save list form -->
-<div class="save-list">
+<div class="saveListFormContainer">
   <h2>Save Your List</h2>
-  <form id="saveListForm">
-    <input type="text" id="listName" placeholder="Enter list name..." />
+  <form action="/create-list/save-list" method="POST" id="saveListForm">
+    <input
+      type="text"
+      id="listName"
+      name="listName"
+      placeholder="Enter list name..."
+    />
     <button type="submit">Save List</button>
   </form>
 </div>
+
+<script>
+  document.getElementById("saveListForm").addEventListener("submit", function
+  (event) { event.preventDefault(); const listName =
+  document.getElementById("listName").value; const selectedPlaces =
+  JSON.parse(localStorage.getItem("selectedPlaces")) || [];
+  fetch('/create-list/save-list', { method: 'POST', headers: { 'Content-Type':
+  'application/json', }, body: JSON.stringify({ name: listName, places:
+  selectedPlaces }), }) .then(response => { if (!response.ok) { throw new
+  Error('Network response was not ok'); } return response.json(); }) .then(data
+  => { alert(data.message); }) .catch(error => { console.error('Error saving
+  list:', error); alert('Failed to save list. Please try again.'); }); });
+</script>
