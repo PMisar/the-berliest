@@ -15,6 +15,7 @@ h1 {
   height: 400px;
 }
 
+<<<<<<< HEAD
 ul {
   list-style-type: none;
   margin: 0;
@@ -25,4 +26,17 @@ ul {
 .btn {
   background-color: #87b7e8;
   border-color: #87b7e8;
+=======
+ /* to style the filter input field */
+ #myInput {
+  padding: 20px;
+  margin-top: -6px;
+  border: 0;
+  border-radius: 0;
+  background: #f1f1f1;
+}
+
+.hidden {
+  display: none;
+>>>>>>> dev
 }
