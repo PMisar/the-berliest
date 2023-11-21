@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User.model");
 const path = require("path");
 const fs = require("fs");
+
 router.post("/add-to-list", (req, res) => {
   const { name } = req.body;
   // console.log("NAME", name);
@@ -13,7 +14,28 @@ router.post("/add-to-list", (req, res) => {
     { new: true }
   )
     .then((user) => {
-      console.log("USER", user);
+      // console.log("USER", user);
+      res.redirect("create-list");
+      // res.render("create-list", { favoriteList: user.favoriteList });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.post("/remove-from-list", (req, res) => {
+  const { name } = req.body;
+
+  if (!name || typeof name !== "string" || name.trim() === "") {
+    return res.status(400).send("Invalid name provided");
+  }
+
+  User.findByIdAndUpdate(
+    req.session.currentUser._id,
+    { $pull: { favoriteList: name } },
+    { new: true }
+  )
+    .then((user) => {
       res.redirect("create-list");
       // res.render("create-list", { favoriteList: user.favoriteList });
     })
@@ -23,13 +45,12 @@ router.post("/add-to-list", (req, res) => {
 });
 
 router.get("/create-list", (req, res) => {
-  console.log("I am working!");
   const placesFilePath = path.join(__dirname, "../db/data-places.json");
-  console.log("I AM THIS USER =", req.session.currentUser._id);
+  // console.log("I AM THIS USER =", req.session.currentUser._id);
 
   User.findById(req.session.currentUser._id)
     .then((user) => {
-      console.log(user.favoriteList);
+      // console.log(user.favoriteList);
       //
 
       fs.readFile(placesFilePath, "utf8", (err, data) => {
