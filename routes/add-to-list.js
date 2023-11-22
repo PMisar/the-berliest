@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
+const FavoritePlace = require('../models/FavoritePlace.model');
 const path = require("path");
 const fs = require("fs");
 
