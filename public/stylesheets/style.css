@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -9,4 +9,20 @@ a {
 
 h1 {
   color: 15px;
+}
+
+#map {
+  height: 400px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.btn {
+  background-color: #87b7e8;
+  border-color: #87b7e8;
 }
