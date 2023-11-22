@@ -12,7 +12,10 @@ Favorite List
 
 <ul id="favorites">
   {{#each coordinates}}
-    <li data-lat="{{this.lat}}" data-lon="{{this.lon}}">{{this.name}}</li>
+    <button
+      data-lat="{{this.lat}}"
+      data-lon="{{this.lon}}"
+    >{{this.name}}</button>
   {{/each}}
 </ul>
 
