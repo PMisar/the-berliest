@@ -61,7 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (index > -1) {
         const markerToRemove = selectedPlaces[index].marker;
         map.removeLayer(markerToRemove);
+        fav.classList.remove("selected");
         selectedPlaces.splice(index, 1);
+
         console.log("Removed place:", name);
       } else {
         const marker = L.marker([lat, lon])
@@ -69,6 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
           .bindPopup(`Name: ${name}<br>Lat: ${lat}<br>Lon: ${lon}`);
         // Add the selected place to the array
         selectedPlaces.push({ name, lat, lon, marker });
+        fav.classList.add("selected");
+
         console.log("added marker at " + name);
       }
     } else {

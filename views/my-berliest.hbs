@@ -1,5 +1,5 @@
 <!-- my-berliest.hbs -->
-Favorite List
+
 {{!-- <ul id="favorites-omar">
   {{#each favorites}}
     <li>{{this}}</li>
@@ -10,19 +10,52 @@ Favorite List
   {{/each}}
 </ul> --}}
 
-<ul id="favorites">
-  {{#each coordinates}}
-    <button
-      data-lat="{{this.lat}}"
-      data-lon="{{this.lon}}"
-    >{{this.name}}</button>
-  {{/each}}
-</ul>
+<div class="container">
+  <row>
+    <h1>MY BERLIEST</h1>
 
-<button id="showRouteBtn" class="btn btn-primary mt-2">
-  Show Route
-</button>
+  </row>
+  <div class="row">
+    <div class="col-6 myberliest-list">
+      <p>Hello,
+        {{user.name}}! We can imagine you're very excited to experience Berlin
+        at its fullest. That's why we made it easier for you to create your
+        'ways' to your favorite places in Berlin. Berlin is the perfect city for
+        a biketour to all the touristic highlights, a pubcrawl, a shopping spree
+        or a museum tour. And ofcourse, Berlin is famous for it's clublife.
+      </p>
+      <h3>Create your own route</h3>
+      <p>
+        Click on the places you want to add or remove to your route. When you're
+        done, click on Show Route to see your route on the map. Have fun!
+      </p>
+      <ul id="favorites">
+        {{#each coordinates}}
+          <button
+            class="btn btn-dark"
+            data-lat="{{this.lat}}"
+            data-lon="{{this.lon}}"
+          >{{this.name}}</button>
+        {{/each}}
+      </ul>
+    </div>
 
-<div class="col-md-6">
-  <div id="map"></div>
+    <div class="col-6">
+      <div id="map"></div>
+      <button id="showRouteBtn" class="btn btn-dark cta">
+        Show Route
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <a href="create-list"><button class="btn btn-dark cta">
+        Change my Berliest
+      </button></a></div>
+  <div class="row">
+    <img
+      src="../public/images/skyline.png"
+      alt="Berlin-skyline"
+      class="berlin-skyline"
+    />
+  </div>
 </div>
