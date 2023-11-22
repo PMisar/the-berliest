@@ -79,7 +79,6 @@ router.get("/create-list", (req, res) => {
     });
 });
 
-
 router.get("/my-berliest", (req, res) => {
   const placesFilePath = path.join(__dirname, "../db/data-places.json");
   // console.log("I AM THIS USER =", req.session.currentUser._id);
@@ -106,15 +105,13 @@ router.get("/my-berliest", (req, res) => {
 
         res.render("my-berliest", {
           favorites: user.favoriteList,
-          coordinates: favoritesWithCoords
-        }); 
+          coordinates: favoritesWithCoords,
+        });
       });
-
     })
     .catch(() => {
       res.status(404).send("USER NOT FOUND");
     });
 });
-
 
 module.exports = router;
