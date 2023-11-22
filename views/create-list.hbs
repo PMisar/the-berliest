@@ -3,6 +3,7 @@
   <div class="row">
     <!-- Dropdown menu on the left side -->
     <div class="col-md-6">
+      <form id="selectCat" action="/select-category" method="post"></form>
       <label for="categorySelect">Select Category:</label>
       <select id="categorySelect" class="form-control">
         <option value="all">All Places</option>
@@ -16,19 +17,11 @@
         <option value="shop">Shop till you drop</option>
         <option value="party">Where is a party at tonight?</option>
       </select>
+      </form>
 
-      <h3>Selected Places</h3>
-      <ul id="selectedPlaces" class="list-group">
-        <!-- Selected places will be added dynamically here -->
-      </ul>
-    </div>
-    <!-- Map on the right side -->
-    <div class="col-md-6">
-      <div id="map"></div>
-    </div>
-  </div>
-</div>
-<ul id="selectedPlaces" class="list-group">
+   
+
+
   <!-- Handlebars will dynamically populate this list -->
 </ul>
 <div class ="row">
@@ -39,7 +32,7 @@
     {{#each places}}
       <li class="place">
         <form action="/add-to-list" method="post">
-        <input type="hidden" name="name" value="{{this.name}}"" />
+        <input type="hidden" name="name" value="{{this.name}}" />
           <button type="submit" class="btn btn-dark">
         {{this.name}}</button>
         </form>
@@ -78,4 +71,11 @@
   </form>
 </div>
 </div>
+    <!-- Map on the right side -->
+    <div class="col-md-4">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+<ul id="selectedPlaces" class="list-group">
 </div>
