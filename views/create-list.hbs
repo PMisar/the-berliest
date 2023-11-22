@@ -1,10 +1,6 @@
-<!-- Show all curated places in a list -->
-<div class="container-fluid">
-  <div class="row">
-    <!-- Dropdown menu on the left side -->
-    <div class="col-md-6">
+      {{!-- <form id="selectCat" action="/select-category" method="post"> 
       <label for="categorySelect">Select Category:</label>
-      <select id="categorySelect" class="form-control">
+      <select id="categorySelect" class="form-control" name="selectedCategory">
         <option value="all">All Places</option>
         <option value="tourist">Like a real tourist</option>
         <option value="museum">Museum</option>
@@ -16,35 +12,50 @@
         <option value="shop">Shop till you drop</option>
         <option value="party">Where is a party at tonight?</option>
       </select>
+      </form> --}}
 
-      <h3>Selected Places</h3>
-      <ul id="selectedPlaces" class="list-group">
-        <!-- Selected places will be added dynamically here -->
-      </ul>
-    </div>
-    <!-- Map on the right side -->
-    <div class="col-md-6">
-      <div id="map"></div>
-    </div>
+<div class="col-md-4">
+      <form id="selectCat" action="/select-category?{{selectedCategory}}" method="get">
+    <label for="categorySelect">Select Category:</label>
+    <select id="categorySelect" class="form-control" name="selectedCategory">
+        <option disabled selected hidden>Click Me...</option>
+        <option value="all">All</option>
+        <option value="breluncoffee">Breluncoffee</option>
+        <option value="bar">Bar</option>
+        <option value="shop">Shop</option>
+        <option value="exhibition">Exhibition</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="tourist">Tourist</option>
+        <option value="museum">Museum</option>
+        <option value="park">Park</option>
+    </select>
+  </form>
   </div>
-</div>
-<ul id="selectedPlaces" class="list-group">
-  <!-- Handlebars will dynamically populate this list -->
-</ul>
+
 <div class ="row">
 <div class="col-md-4">
   <h2>Pick all your places</h2>
 <p>Click on the place to <strong>add</strong> them to your favorites</p>
   <ul class="places-list">
+{{#if foundPlaces}}
+ {{#each foundPlaces}}
+     <form action="/add-to-list" method="post">
+        <button type="submit" class="btn btn-dark"><li>{{name}}</li></button>
+        <input type="hidden" name="name" value="{{name}}" />
+      </form>
+      {{/each}}
+{{else}}
     {{#each places}}
       <li class="place">
         <form action="/add-to-list" method="post">
-        <input type="hidden" name="name" value="{{this.name}}"" />
+        <input type="hidden" name="name" value="{{this.name}}" />
           <button type="submit" class="btn btn-dark">
         {{this.name}}</button>
         </form>
         </li>
     {{/each}}
+
+    {{/if}}
   </ul>
 </p>
 </div>
@@ -52,6 +63,8 @@
 <h2>{{username}}'s' Berliest places</h2>
 <p>Click on the place to <strong>remove</strong> them from your Berliest</p>
 <ul class="favorites-list">
+
+
   {{#each favorites}}
     
       <form action="/remove-from-list" method="post">
@@ -61,7 +74,7 @@
       </form>
 
     
-  {{/each}}
+  {{/each}} 
 </ul>
 
 <!-- Save list form -->
@@ -79,3 +92,13 @@
 </div>
 </div>
 </div>
+
+<script>
+  // Get the select element
+  const selectElement = document.getElementById('categorySelect');
+  // Add change event listener to the select element
+  selectElement.addEventListener('change', function(event) {
+    // Submit the form when an option is selected
+    document.getElementById('selectCat').submit();
+  });
+</script>

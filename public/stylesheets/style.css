@@ -26,3 +26,32 @@ ul {
   background-color: #87b7e8;
   border-color: #87b7e8;
 }
+
+/* test */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
