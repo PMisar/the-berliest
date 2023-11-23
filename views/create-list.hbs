@@ -2,80 +2,81 @@
 <div class="container-fluid">
   <div class="row">
     <!-- Dropdown menu on the left side -->
-    <div class="col-md-6">
-      <form id="selectCat" action="/select-category" method="post"></form>
-      <label for="categorySelect">Select Category:</label>
-      <select id="categorySelect" class="form-control">
-        <option value="all">All Places</option>
-        <option value="tourist">Like a real tourist</option>
-        <option value="museum">Museum</option>
-        <option value="breluncoffee">Frühstuck all day</option>
-        <option value="restaurant">Taste Explorer</option>
-        <option value="bar">Sip & Socialize</option>
-        <option value="park">A day at the park</option>
-        <option value="club">Endless dancing</option>
-        <option value="shop">Shop till you drop</option>
-        <option value="party">Where is a party at tonight?</option>
-      </select>
+    <div>
+      <form id="selectCat" action="/create-list?{{selectedCategory}}" method="get">
+        <label for="category">Select Category:</label>
+        <select id="category" class="form-control" name="category" onchange='if(this.value != 0) { this.form.submit(); }'>
+          {{# if category}}
+          <option value={{category}} selected >{{category}}</option>
+          {{/if}}
+          {{#each allCategories}}
+          <option value={{this}}>{{this}}</option>
+          {{/each}}
+        </select>
       </form>
+      {{!-- <form id="selectCat" action="/select-category" method="post">
+        <label for="categorySelect">Select Category:</label>
+        <select id="categorySelect" name="category" class="form-control">
+          <option value="tourist">Like a real tourist</option>
+          <option value="museum">Museum</option>
+          <option value="breluncoffee">Frühstuck all day</option>
+        </select>
+        <input type="hidden" name="category" /> <!-- Place the hidden input here -->
+        <button type="submit" class="btn btn-dark">Filter</button>
+      </form> --}}
 
-   
+
+      <!-- Handlebars will dynamically populate this list -->
+      </ul>
+      <div class="row">
+        <div class="col-4">
+          <h2>Pick all your places</h2>
+          <p>Click on the place to <strong>add</strong> them to your favorites</p>
+          <ul class="places-list">
+            {{#each places}}
+            <li class="place">
+              <form action="/add-to-list" method="post">
+                <input type="hidden" name="name" value="{{this.name}}" />
+                <button type="submit" class="btn btn-dark">
+                  {{this.name}}</button>
+              </form>
+            </li>
+            {{/each}}
+          </ul>
+          </p>
+        </div>
+        <div class="col-4">
+          <h2>{{username}}'s' Berliest places</h2>
+          <p>Click on the place to <strong>remove</strong> them from your Berliest</p>
+          <ul class="favorites-list">
+            {{#each favorites}}
+
+            <form action="/remove-from-list" method="post">
+              <button type="submit" class="btn btn-dark">
+                <li>{{this}}</li>
+              </button>
+              <input type="hidden" name="name" value="{{this}}" />
+
+            </form>
 
 
-  <!-- Handlebars will dynamically populate this list -->
-</ul>
-<div class ="row">
-<div class="col-md-4">
-  <h2>Pick all your places</h2>
-<p>Click on the place to <strong>add</strong> them to your favorites</p>
-  <ul class="places-list">
-    {{#each places}}
-      <li class="place">
-        <form action="/add-to-list" method="post">
-        <input type="hidden" name="name" value="{{this.name}}" />
-          <button type="submit" class="btn btn-dark">
-        {{this.name}}</button>
-        </form>
-        </li>
-    {{/each}}
-  </ul>
-</p>
-</div>
-<div class="col-md-4">
-<h2>{{username}}'s' Berliest places</h2>
-<p>Click on the place to <strong>remove</strong> them from your Berliest</p>
-<ul class="favorites-list">
-  {{#each favorites}}
-    
-      <form action="/remove-from-list" method="post">
-        <button type="submit" class="btn btn-dark"><li>{{this}}</li></button>
-        <input type="hidden" name="name" value="{{this}}" />
+            {{/each}}
+          </ul>
 
-      </form>
-
-    
-  {{/each}}
-</ul>
-
-<!-- Save list form -->
-<div class="saveListFormContainer">
-  <h2>Save Your List</h2>
-  <form action="/create-list/save-list" method="POST" id="saveListForm">
-    <input
-      type="text"
-      id="listName"
-      name="listName"
-      placeholder="Enter list name..."
-    />
-    <button type="submit">Save List</button>
-  </form>
-</div>
-</div>
-    <!-- Map on the right side -->
-    <div class="col-md-4">
-      <div id="map"></div>
+          <!-- Save list form -->
+          <div class="saveListFormContainer">
+            <h2>Save Your List</h2>
+            <form action="/create-list/save-list" method="POST" id="saveListForm">
+              <input type="text" id="listName" name="listName" placeholder="Enter list name..." />
+              <button type="submit">Save List</button>
+            </form>
+          </div>
+        </div>
+        <!-- Map on the right side -->
+        <div class="col-4">
+          <div id="map"></div>
+        </div>
+      </div>
     </div>
+    <ul id="selectedPlaces" class="list-group">
   </div>
-</div>
-<ul id="selectedPlaces" class="list-group">
-</div>
