@@ -12,40 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedPlaces = []; // Move this outside the loop
 
-  // favorites.addEventListener("click", (event) => {
-  //   const fav = event.target;
-  //   const name = fav.textContent.trim();
-  //   const lat = parseFloat(fav.dataset.lat);
-  //   const lon = parseFloat(fav.dataset.lon);
-
-  //   console.log("Name:", name, "Lat:", lat, "Lon:", lon);
-
-  //   if (!isNaN(lat) && !isNaN(lon)) {
-  //     console.log("Adding marker at:", lat, lon);
-  //     console.log("Selected Places:", selectedPlaces);
-
-  //     const marker = L.marker([lat, lon])
-  //       .addTo(map)
-  //       .bindPopup(
-  //         `Name: ${name}<br>Lat: ${lat}<br>Lon: ${lon}<br><button class="marker-delete-button">Delete</button>`
-  //       );
-
-  //     marker.on("popupopen", function () {
-  //       const tempMarker = this;
-
-  //       // Event handling for the "Delete" button in the marker's popup
-  //       $(".marker-delete-button").click(function () {
-  //         map.removeLayer(tempMarker);
-  //       });
-  //     });
-
-  //     // Add the selected place to the array
-  //     selectedPlaces.push({ name, lat, lon });
-  //   } else {
-  //     console.error("Invalid or missing coordinates for:", name);
-  //   }
-  // });
-
   favorites.addEventListener("click", (event) => {
     const fav = event.target;
     const name = fav.textContent;

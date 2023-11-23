@@ -38,8 +38,8 @@ router.post("/remove-from-list", (req, res) => {
     { new: true }
   )
     .then((user) => {
-      if (!category) {
-        res.redirect(`/create-list`);
+      if (category === "all") {
+        res.redirect(`/create-list?category=all`);
         return;
       }
       res.redirect(`/create-list?category=${category}`);
@@ -89,40 +89,8 @@ router.get("/create-list", async (req, res) => {
       allCategories,
       category,
     }); // Pass places data to the template
-    // res.send(places);
   });
   return;
-  // User.findById(req.session.currentUser._id)
-  //   .then((user) => {
-  //     let favorites = user.favoriteList;
-  //     // console.log(favorites);
-
-  //     fs.readFile(placesFilePath, "utf8", (err, data) => {
-  //       if (err) {
-  //         console.error("Error reading places JSON file:", err);
-  //         return res.status(500).send("Internal Server Error");
-  //       }
-
-  //       const places = JSON.parse(data); // Parse JSON data
-
-  //       const filteredPlaces = places.filter(
-  //         (place) => !favorites.includes(place.name)
-  //       );
-
-  //       res.render("create-list", {
-  //         places: filteredPlaces,
-  //         favorites: favorites,
-  //         username: user.username,
-  //         category: category,
-  //       }); // Pass places data to the template
-  //       // res.send(places);
-  //     });
-
-  //     //
-  //   })
-  //   .catch(() => {
-  //     res.status(404).send("USER NOT FOUND");
-  //   });
 });
 
 router.get("/my-berliest", (req, res) => {
