@@ -1,3 +1,4 @@
+
 <!-- Show all curated places in a list -->
 <div class="container-fluid">
   <div class="row">
@@ -14,12 +15,12 @@
           {{/each}}
         </select>
       </form>
-
+</div>
 
       <!-- Handlebars will dynamically populate this list -->
-      </ul>
+ 
       <div class="row">
-        <div class="col-4">
+        <div class="col-3">
           <h2>Pick all your places</h2>
           <p>Click on the place to <strong>add</strong> them to your favorites</p>
           <ul class="places-list">
@@ -36,7 +37,7 @@
           </ul>
           </p>
         </div>
-        <div class="col-4">
+        <div class="col-3">
           <h2>{{username}}'s' Berliest places</h2>
           <p>Click on the place to <strong>remove</strong> them from your Berliest</p>
           <ul class="favorites-list">
@@ -54,21 +55,14 @@
 
             {{/each}}
           </ul>
-
-          <!-- Save list form -->
-          <div class="saveListFormContainer">
-            <h2>Save Your List</h2>
-            <form action="/create-list/save-list" method="POST" id="saveListForm">
-              <input type="text" id="listName" name="listName" placeholder="Enter list name..." />
-              <button type="submit">Save List</button>
-            </form>
-          </div>
-        </div>
-        <!-- Map on the right side -->
-        <div class="col-4">
-          <div id="map"></div>
-        </div>
-      </div>
+</div>
+    <!-- Map on the right side -->
+    <div class="col-md-6">
+      <div id="map"></div>
     </div>
-    <ul id="selectedPlaces" class="list-group">
   </div>
+</div>
+<ul id="selectedPlaces" class="list-group">
+</div>
+
+<script src="/js/create-list-map.js"></script>

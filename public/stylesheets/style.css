@@ -40,7 +40,8 @@ h1 {
 }
 
 #map {
-  height: 400px;
+  height: 380px;
+  margin-top:1%;
 }
 
 ul {
@@ -76,4 +77,104 @@ ul {
   background-color: #c3195d;
   border: 1px solid #c3195d;
   border-radius: 4px;
+}
+
+
+.my-berliest-text{
+  margin-left:1%;
+  margin-right:1%;
+}
+
+button {
+  background-color:#44BFC8;
+  border-color: #44BFC8;
+}
+
+#showRouteBtn{
+  background-color: #008080; /* Teal */
+  color: white;
+  border-color: #008080;
+}
+
+.place-btn {
+  /* Common styles for all buttons */
+  padding: 5px;
+  margin: 5px;
+}
+
+/* test */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+
+  border: none;
+  cursor: pointer;
+}
+
+
+/* Category-specific styles */
+.breluncoffee {
+  background-color: #FFC72C; /* Sunny Yellow */
+  color: white;
+}
+
+.bar {
+  background-color: #FF4D9E; /* Coral Orange */
+  color: white;
+}
+
+.shop {
+  background-color: #FF6F61; /* Fuchsia Pink */
+  color: white;
+}
+
+.exhibition {
+  background-color: #8A4D76; /* Bright Purple */
+  color: white;
+}
+
+.restaurant {
+  background-color: #44BFC8; /* Turquoise Blue */
+  color: white;
+}
+
+.tourist {
+  background-color: #FF4D9E; /* Coral Orange */
+  color: white;
+}
+
+.club {
+  background-color: #A4DE02; /* Lime Green */
+  color: white;
+}
+
+.museum {
+  background-color: #FF3E4D; /* Electric Red */
+  color: white;
+}
+
+.park {
+  background-color: #4CAF50; /* Forest Green */
+  color: white;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-menu select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
 }

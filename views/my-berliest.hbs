@@ -1,61 +1,44 @@
 <!-- my-berliest.hbs -->
-
-{{!-- <ul id="favorites-omar">
-  {{#each favorites}}
-    <li>{{this}}</li>
-  {{/each}}
-
-  {{#each coordinates}}
-    <li>Name: {{this.name}}, Lat: {{this.lat}}, Lon: {{this.lon}}</li>
-  {{/each}}
-</ul> --}}
-
-<div class="container">
-  <row>
-    <h1>MY BERLIEST</h1>
-
-  </row>
+<p class="my-berliest-text">🌟 Herzlich willkommen to your own slice of Berlin
+  bliss,
+  {{username}}! 🌈 Dive into the heart of the city with The Berliest, where your
+  favorite places come to life. Revisit cherished spots, plan your next Berlin
+  adventure, and chart your course with our seamless route-by-car or leisurely
+  stroll-by-foot options. Your map, your city, your Berliest—let the Berlin
+  magic unfold! 🗺️✨
+</p>
+<div class="container-fluid">
   <div class="row">
-    <div class="col-6 myberliest-list">
-      <p>Hello,
-        {{user.name}}! We can imagine you're very excited to experience Berlin
-        at its fullest. That's why we made it easier for you to create your
-        'ways' to your favorite places in Berlin. Berlin is the perfect city for
-        a biketour to all the touristic highlights, a pubcrawl, a shopping spree
-        or a museum tour. And ofcourse, Berlin is famous for it's clublife.
-      </p>
-      <h3>Create your own route</h3>
-      <p>
-        Click on the places you want to add or remove to your route. When you're
-        done, click on Show Route to see your route on the map. Have fun!
-      </p>
+    <!-- Favorites on the left -->
+    <div class="col-md-6">
       <ul id="favorites">
         {{#each coordinates}}
           <button
-            class="btn btn-dark"
+            class="place-btn {{this.category}}"
+            data-category="{{this.category}}"
             data-lat="{{this.lat}}"
             data-lon="{{this.lon}}"
           >{{this.name}}</button>
         {{/each}}
       </ul>
+      <div id="directions-container"></div>
     </div>
 
-    <div class="col-6">
+    <!-- Map on the right -->
+    <div class="col-md-6">
+      <button id="showRouteBtn" class="btn btn-primary mt-2">Show Route</button>
+      <a href="#" id="carBtn">
+        <img src="/images/car_logo.png" alt="Car Button Image" />
+      </a>
+      <a href="#" id="bicycleBtn">
+        <img src="/images/bicycle_logo.png" alt="Bicycle Button Image" />
+      </a>
+      <a href="#" id="footBtn">
+        <img src="/images/foot_logo.png" alt="Foot Button Image" />
+      </a>
       <div id="map"></div>
-      <button id="showRouteBtn" class="btn btn-dark cta">
-        Show Route
-      </button>
+      
     </div>
   </div>
-  <div class="row">
-    <a href="create-list"><button class="btn btn-dark cta">
-        Change my Berliest
-      </button></a></div>
-  <div class="row">
-    <img
-      src="../public/images/skyline.png"
-      alt="Berlin-skyline"
-      class="berlin-skyline"
-    />
-  </div>
 </div>
+<script src="/js/my-berliest-map.js"></script>

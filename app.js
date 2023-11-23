@@ -14,10 +14,24 @@ const express = require("express");
 const hbs = require("hbs");
 const bodyParser = require("body-parser");
 
-const app = express();
+
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
-require("./config")(app);
+
+const app = express();
+
+app.set("view engine", "hbs");
+
+// //     |
+// //     |-----------------------------|
+// // use session here:                 V
+require('./config/session.config')(app);
+// require("./config")(app);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
 
 const capitalize = require("./utils/capitalize");
 const projectName = "the-berliest";

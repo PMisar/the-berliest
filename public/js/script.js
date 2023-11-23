@@ -100,3 +100,4 @@ document
       console.error("Error fetching route from GraphHopper:", error);
     }
   });
+
