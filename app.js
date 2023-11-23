@@ -3,7 +3,7 @@
 require("dotenv").config();
 
 // ℹ️ Connects to the database
-// require("./db");
+require("./db");
 
 // Handles http requests (express is node js framework)
 // https://www.npmjs.com/package/express
@@ -13,10 +13,22 @@ const express = require("express");
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
 
-const app = express();
+
 
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
-require("./config")(app);
+
+const app = express();
+
+app.set("view engine", "hbs");
+
+// //     |
+// //     |-----------------------------|
+// // use session here:                 V
+require('./config/session.config')(app);
+// require("./config")(app);
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const capitalize = require("./utils/capitalize");
 const projectName = "the-berliest";

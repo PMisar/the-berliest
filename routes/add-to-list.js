@@ -63,7 +63,7 @@ router.get("/select-category", async (req, res, next) => {
       foundPlaces: foundPlaces,
       username: user.username,
     });
-    
+
   } catch (err) {
     next(err);
   }
@@ -124,11 +124,6 @@ router.get("/create-list", (req, res) => {
         }
 
         const places = JSON.parse(data); // Parse JSON data
-
-        // Esmee's version
-
-        // const foundPlacesName = foundPlaces.name;
-        // const catFiltered = places.filter((place) => filteredPlaceNames.includes(place.name)); 
 
         const filteredPlaces = places.filter(
           (place) => !favorites.includes(place.name)
