@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const lat = parseFloat(fav.dataset.lat);
     const lon = parseFloat(fav.dataset.lon);
     const category = fav.dataset.category;
+    const description = fav.dataset.description;
+    const tag = fav.dataset.tag;
+    const neighborhood = fav.dataset.neighborhood;
 
     console.log(fav.dataset);
 
@@ -37,27 +40,27 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         function getIconHtml(category) {
           switch (category) {
-            case "breluncoffee":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#FFC72C" opacity="0.9" /></svg>';
+            case "cafe":
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#1f6f78" opacity="0.9" class="circle"/></svg>';
             case "bar":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#FF4D9E" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#2a7a7f" opacity="0.9" class="circle"/></svg>';
             case "shop":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#FF6F61" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#358586" opacity="0.9" class="circle"/></svg>';
             case "exhibition":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#8A4D76" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#40908d" opacity="0.9" class="circle"/></svg>';
             case "restaurant":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#44BFC8" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#4b9c94" opacity="0.9" class="circle"/></svg>';
             case "tourist":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#FF4D9E" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#56a79b" opacity="0.9" class="circle"/></svg>';
             case "club":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#A4DE02" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#61b2a2" opacity="0.9" class="circle"/></svg>';
             case "museum":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#FF3E4D" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#6cbda9" opacity="0.9" class="circle"/></svg>';
             case "park":
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="#4CAF50" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="#77c8b0" opacity="0.9" class="circle"/></svg>';
             // Add cases for other categories
             default:
-              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="10" fill="red" opacity="0.9" /></svg>';
+              return '<svg width="30" height="30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="7" fill="red" opacity="0.9" class="circle"/></svg>';
           }
         }
 
@@ -70,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const marker = L.marker([lat, lon], { icon: customIcon })
           .addTo(map)
           .bindPopup(
-            `Name: ${name}<br>Lat: ${lat}<br>Lon: ${lon}<br>Category:${category}`
+            `Name: ${name}<br>Tag: ${tag}<br>Category: ${category}<br>Neighborhood: ${neighborhood}<br>Description: ${description}`
           );
         // Add the selected place to the array
         selectedPlaces.push({ name, lat, lon, marker });
@@ -116,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Error updating directions in HTML:", error);
     }
   }
-
 
   // Move this outside the loop
   document
@@ -180,9 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Coordinates:", routeCoordinates);
 
         // Add a new polyline to the map
-        routePolyline = L.polyline(routeCoordinates, { color: "blue" }).addTo(
-          map
-        );
+        routePolyline = L.polyline(routeCoordinates, {
+          color: "#1F6F78",
+        }).addTo(map);
 
         console.log("Polyline Bounds:", routePolyline.getBounds());
 
