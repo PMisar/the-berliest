@@ -41,7 +41,7 @@ h1 {
 
 #map {
   height: 380px;
-  margin-top:1%;
+  margin-top: 1%;
 }
 
 ul {
@@ -79,18 +79,17 @@ ul {
   border-radius: 4px;
 }
 
-
-.my-berliest-text{
-  margin-left:1%;
-  margin-right:1%;
+.my-berliest-text {
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 button {
-  background-color:#44BFC8;
-  border-color: #44BFC8;
+  background-color: #44bfc8;
+  border-color: #44bfc8;
 }
 
-#showRouteBtn{
+#showRouteBtn {
   background-color: #008080; /* Teal */
   color: white;
   border-color: #008080;
@@ -117,50 +116,49 @@ button {
   cursor: pointer;
 }
 
-
 /* Category-specific styles */
 .breluncoffee {
-  background-color: #FFC72C; /* Sunny Yellow */
+  background-color: #ffc72c; /* Sunny Yellow */
   color: white;
 }
 
 .bar {
-  background-color: #FF4D9E; /* Coral Orange */
+  background-color: #ff4d9e; /* Coral Orange */
   color: white;
 }
 
 .shop {
-  background-color: #FF6F61; /* Fuchsia Pink */
+  background-color: #ff6f61; /* Fuchsia Pink */
   color: white;
 }
 
 .exhibition {
-  background-color: #8A4D76; /* Bright Purple */
+  background-color: #8a4d76; /* Bright Purple */
   color: white;
 }
 
 .restaurant {
-  background-color: #44BFC8; /* Turquoise Blue */
+  background-color: #44bfc8; /* Turquoise Blue */
   color: white;
 }
 
 .tourist {
-  background-color: #FF4D9E; /* Coral Orange */
+  background-color: #ff4d9e; /* Coral Orange */
   color: white;
 }
 
 .club {
-  background-color: #A4DE02; /* Lime Green */
+  background-color: #a4de02; /* Lime Green */
   color: white;
 }
 
 .museum {
-  background-color: #FF3E4D; /* Electric Red */
+  background-color: #ff3e4d; /* Electric Red */
   color: white;
 }
 
 .park {
-  background-color: #4CAF50; /* Forest Green */
+  background-color: #4caf50; /* Forest Green */
   color: white;
 }
 
@@ -168,7 +166,7 @@ button {
   display: none;
   position: absolute;
   background-color: #fff;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -177,4 +175,70 @@ button {
   padding: 10px;
   border: none;
   outline: none;
+}
+
+#login-form {
+    max-width: 400px; 
+    width: 100%;
+    margin-top: 70px;
+  }
+
+  #signup-form {
+    max-width: 400px; 
+    width: 100%;
+    margin-top: 70px;
+  }
+
+  #login-form button {
+    padding: 6px 12px;
+    color: white;
+    background-color: #F70776;
+    border: 1px solid #F70776;
+    border-radius: 4px;
+    margin: 20px 5px;
+
+  }
+
+  #signup-form button {
+    padding: 6px 12px;
+    color: white;
+    background-color: #F70776;
+    border: 1px solid #F70776;
+    border-radius: 4px;
+    margin: 20px 5px;
+  }
+
+  #signup-form h2 {
+    white-space: nowrap;
+  }
+
+  #signup-form p {
+    white-space: nowrap;
+  }
+
+  /* for the heart shaped image */
+  .custom-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-img {
+    width: 16px; 
+    height: 16px; 
+    margin-right: 5px; 
+    margin-bottom: 6px;
+  }
+
+  .brand-text {
+    color: white;
+    text-decoration: none;
+  }
+
+  
+  
+  .navbar-brand:hover,
+  .navbar-brand:focus {
+  color: white;
+  text-decoration: none;
 }
