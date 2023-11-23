@@ -41,10 +41,11 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
     return;
   }
+  
 
   //   ! This regular expression checks password for special characters and minimum length
-  /*
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  
+  const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
   if (!regex.test(password)) {
     res
       .status(400)
@@ -53,7 +54,14 @@ router.post("/signup", isLoggedOut, (req, res) => {
     });
     return;
   }
-  */
+
+  // Check if the username is the same as the email
+  if (username === email) {
+    res.status(400).render("auth/signup", {
+      errorMessage: "Username cannot be the same as email. Provide a different username.",
+    });
+    return;
+  }
 
   // Create a new user - start by hashing the password
   bcrypt
@@ -64,15 +72,16 @@ router.post("/signup", isLoggedOut, (req, res) => {
       return User.create({ username, email, password: hashedPassword });
     })
     .then((user) => {
+      console.log(`User created: ${user.username} (${user.email})`);
       res.redirect("/auth/login");
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
         res.status(500).render("auth/signup", { errorMessage: error.message });
       } else if (error.code === 11000) {
+        // Duplicate key error
         res.status(500).render("auth/signup", {
-          errorMessage:
-            "Username and email need to be unique. Provide a valid username or email.",
+          errorMessage: "Username or email is already taken. Please provide unique values.",
         });
       } else {
         next(error);
@@ -85,8 +94,16 @@ router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
+//test code
+router.use(express.json());
+
+// Parse URL-encoded form data
+router.use(express.urlencoded({ extended: true }));
+//test code end 
+
 // POST /auth/login
 router.post("/login", isLoggedOut, (req, res, next) => {
+  console.log('SESSION =====> ', req.session);
   const { username, email, password } = req.body;
 
   // Check that username, email, and password are provided
@@ -147,11 +164,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 // GET /auth/logout
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
+    console.log('User has logged out')
     if (err) {
       res.status(500).render("auth/logout", { errorMessage: err.message });
       return;
     }
-
+    res.clearCookie("connect.sid");
     res.redirect("/auth/login");
   });
 });

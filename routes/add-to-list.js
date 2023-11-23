@@ -5,6 +5,8 @@ const FavoritePlace = require('../models/FavoritePlace.model');
 const path = require("path");
 const fs = require("fs");
 
+const Place = require("../models/Place.model");
+
 router.post("/add-to-list", (req, res) => {
   const { name } = req.body;
   console.log(req.body.name);
@@ -15,7 +17,7 @@ router.post("/add-to-list", (req, res) => {
     { new: true }
   )
     .then((user) => {
-      //   console.log(user.favoriteList);
+      //   console.log(user.favoriteList);
       res.redirect("create-list");
       // res.render("create-list", { favoriteList: user.favoriteList });
     })
@@ -69,11 +71,9 @@ router.get("/create-list", (req, res) => {
           places: filteredPlaces,
           favorites: favorites,
           username: user.username,
-        }); // Pass places data to the template
-        // res.send(places);
+          // selectedCategory: user.selectedCategory, // Pass the selectedCategory here
+        });
       });
-
-      //
     })
     .catch(() => {
       res.status(404).send("USER NOT FOUND");
