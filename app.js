@@ -30,6 +30,8 @@ require('./config/session.config')(app);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
 
 const capitalize = require("./utils/capitalize");
 const projectName = "the-berliest";

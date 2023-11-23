@@ -1,25 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
-const FavoritePlace = require('../models/FavoritePlace.model');
+const FavoritePlace = require("../models/FavoritePlace.model");
 const path = require("path");
 const fs = require("fs");
-
 const Place = require("../models/Place.model");
 
 router.post("/add-to-list", (req, res) => {
-  const { name } = req.body;
-  console.log(req.body.name);
-
+  const { name, category } = req.body;
   User.findByIdAndUpdate(
     req.session.currentUser._id,
     { $push: { favoriteList: name } },
     { new: true }
   )
     .then((user) => {
-      //   console.log(user.favoriteList);
-      res.redirect("create-list");
-      // res.render("create-list", { favoriteList: user.favoriteList });
+      if (category === "all") {
+        res.redirect(`/create-list?category=all`);
+        return;
+      }
+      res.redirect(`/create-list?category=${category}`);
     })
     .catch((err) => {
       console.log(err);
@@ -27,7 +26,7 @@ router.post("/add-to-list", (req, res) => {
 });
 
 router.post("/remove-from-list", (req, res) => {
-  const { name } = req.body;
+  const { name, category } = req.body;
 
   if (!name || typeof name !== "string" || name.trim() === "") {
     return res.status(400).send("Invalid name provided");
@@ -39,45 +38,59 @@ router.post("/remove-from-list", (req, res) => {
     { new: true }
   )
     .then((user) => {
-      res.redirect("create-list");
-      // res.render("create-list", { favoriteList: user.favoriteList });
+      if (category === "all") {
+        res.redirect(`/create-list?category=all`);
+        return;
+      }
+      res.redirect(`/create-list?category=${category}`);
     })
     .catch((err) => {
       console.log(err);
     });
 });
 
-router.get("/create-list", (req, res) => {
+router.get("/create-list", async (req, res) => {
+  let { category } = req.query;
+  if (!category) {
+    category = "all";
+  }
   const placesFilePath = path.join(__dirname, "../db/data-places.json");
+  const foundUser = await User.findById(req.session.currentUser._id);
+  let allCategories = await Place.find();
+  allCategories = allCategories.map((place) => place.category);
+  !allCategories.includes("all") && allCategories.unshift("all");
+  allCategories = [...new Set(allCategories)];
+  allCategories = allCategories.filter((place) => place !== category);
+  // return res.send(allCategories);
 
-  User.findById(req.session.currentUser._id)
-    .then((user) => {
-      let favorites = user.favoriteList;
-      console.log(favorites);
+  fs.readFile(placesFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading places JSON file:", err);
+      return res.status(500).send("Internal Server Error");
+    }
 
-      fs.readFile(placesFilePath, "utf8", (err, data) => {
-        if (err) {
-          console.error("Error reading places JSON file:", err);
-          return res.status(500).send("Internal Server Error");
-        }
+    const places = JSON.parse(data); // Parse JSON data
+    let filteredPlaces = places.filter(
+      (place) => !foundUser.favoriteList.includes(place.name)
+    );
 
-        const places = JSON.parse(data); // Parse JSON data
+    if (category && category !== "all") {
+      filteredPlaces = places.filter(
+        (place) =>
+          place.category === category &&
+          !foundUser.favoriteList.includes(place.name)
+      );
+    }
 
-        const filteredPlaces = places.filter(
-          (place) => !favorites.includes(place.name)
-        );
-
-        res.render("create-list", {
-          places: filteredPlaces,
-          favorites: favorites,
-          username: user.username,
-          // selectedCategory: user.selectedCategory, // Pass the selectedCategory here
-        });
-      });
-    })
-    .catch(() => {
-      res.status(404).send("USER NOT FOUND");
-    });
+    res.render("create-list", {
+      places: filteredPlaces,
+      favorites: foundUser.favoriteList,
+      username: foundUser.username,
+      allCategories,
+      category,
+    }); // Pass places data to the template
+  });
+  return;
 });
 
 router.get("/my-berliest", (req, res) => {

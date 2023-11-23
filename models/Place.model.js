@@ -33,9 +33,9 @@ const placeSchema = new Schema(
       required: true,
     },
     selectedCategory: {
-      type : [String],
-      default: []
-    }
+      type: [String], // Array of strings
+      default: [], // Default value as an empty array
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
