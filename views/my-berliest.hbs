@@ -1,6 +1,6 @@
 <!-- my-berliest.hbs -->
 Favorite List
-<ul>
+{{!-- <ul id="favorites-omar">
   {{#each favorites}}
     <li>{{this}}</li>
   {{/each}}
@@ -8,7 +8,20 @@ Favorite List
   {{#each coordinates}}
     <li>Name: {{this.name}}, Lat: {{this.lat}}, Lon: {{this.lon}}</li>
   {{/each}}
+</ul> --}}
+
+<ul id="favorites">
+  {{#each coordinates}}
+    <button
+      data-lat="{{this.lat}}"
+      data-lon="{{this.lon}}"
+    >{{this.name}}</button>
+  {{/each}}
 </ul>
+
+<button id="showRouteBtn" class="btn btn-primary mt-2">
+  Show Route
+</button>
 
 <div class="col-md-6">
   <div id="map"></div>

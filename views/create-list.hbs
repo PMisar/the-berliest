@@ -1,4 +1,11 @@
-      {{!-- <form id="selectCat" action="/select-category" method="post"> 
+
+<!-- Show all curated places in a list -->
+<div class="container-fluid">
+  <div class="row">
+    <!-- Dropdown menu on the left side -->
+    <div class="col-md-6">
+      <form id="selectCat" action="/select-category" method="post"></form>
+
       <label for="categorySelect">Select Category:</label>
       <select id="categorySelect" class="form-control" name="selectedCategory">
         <option value="all">All Places</option>
@@ -12,25 +19,6 @@
         <option value="shop">Shop till you drop</option>
         <option value="party">Where is a party at tonight?</option>
       </select>
-      </form> --}}
-
-<div class="col-md-4">
-      <form id="selectCat" action="/select-category?{{selectedCategory}}" method="get">
-    <label for="categorySelect">Select Category:</label>
-    <select id="categorySelect" class="form-control" name="selectedCategory">
-        <option disabled selected hidden>Click Me...</option>
-        <option value="all">All</option>
-        <option value="breluncoffee">Breluncoffee</option>
-        <option value="bar">Bar</option>
-        <option value="shop">Shop</option>
-        <option value="exhibition">Exhibition</option>
-        <option value="restaurant">Restaurant</option>
-        <option value="tourist">Tourist</option>
-        <option value="museum">Museum</option>
-        <option value="park">Park</option>
-    </select>
-  </form>
-  </div>
 
 <div class ="row">
 <div class="col-md-4">
@@ -91,14 +79,13 @@
   </form>
 </div>
 </div>
+
+    <!-- Map on the right side -->
+    <div class="col-md-4">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+<ul id="selectedPlaces" class="list-group">
 </div>
 
-<script>
-  // Get the select element
-  const selectElement = document.getElementById('categorySelect');
-  // Add change event listener to the select element
-  selectElement.addEventListener('change', function(event) {
-    // Submit the form when an option is selected
-    document.getElementById('selectCat').submit();
-  });
-</script>

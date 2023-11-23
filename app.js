@@ -12,6 +12,7 @@ const express = require("express");
 // Handles the handlebars
 // https://www.npmjs.com/package/hbs
 const hbs = require("hbs");
+const bodyParser = require("body-parser");
 
 
 
@@ -49,6 +50,8 @@ app.use("/", listRoutes); // you are listening to this route
 
 const addToList = require("./routes/add-to-list");
 app.use("/", addToList);
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/my-berliest", (req, res) => {
   res.render("my-berliest");
