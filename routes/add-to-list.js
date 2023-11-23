@@ -101,12 +101,14 @@ router.get("/my-berliest", (req, res) => {
             name: favorite,
             lat: place ? place.lat : null,
             lon: place ? place.lon : null,
+            category: place ? place.category : null,
           };
         });
 
         res.render("my-berliest", {
           favorites: user.favoriteList,
           coordinates: favoritesWithCoords,
+          username: user.username,
         });
       });
     })

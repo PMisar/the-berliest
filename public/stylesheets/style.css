@@ -1,6 +1,8 @@
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: 'Pacifico', cursive;
+  /*Lucida Grande, Helvetica, Arial, sans-serif*/
 }
 
 a {
@@ -12,7 +14,8 @@ h1 {
 }
 
 #map {
-  height: 400px;
+  height: 380px;
+  margin-top:1%;
 }
 
 ul {
@@ -25,4 +28,74 @@ ul {
 .btn {
   background-color: #87b7e8;
   border-color: #87b7e8;
+}
+
+.my-berliest-text{
+  margin-left:1%;
+  margin-right:1%;
+}
+
+button {
+  background-color:#44BFC8;
+  border-color: #44BFC8;
+}
+
+#showRouteBtn{
+  background-color: #008080; /* Teal */
+  color: white;
+  border-color: #008080;
+}
+
+.place-btn {
+  /* Common styles for all buttons */
+  padding: 5px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Category-specific styles */
+.breluncoffee {
+  background-color: #FFC72C; /* Sunny Yellow */
+  color: white;
+}
+
+.bar {
+  background-color: #FF4D9E; /* Coral Orange */
+  color: white;
+}
+
+.shop {
+  background-color: #FF6F61; /* Fuchsia Pink */
+  color: white;
+}
+
+.exhibition {
+  background-color: #8A4D76; /* Bright Purple */
+  color: white;
+}
+
+.restaurant {
+  background-color: #44BFC8; /* Turquoise Blue */
+  color: white;
+}
+
+.tourist {
+  background-color: #FF4D9E; /* Coral Orange */
+  color: white;
+}
+
+.club {
+  background-color: #A4DE02; /* Lime Green */
+  color: white;
+}
+
+.museum {
+  background-color: #FF3E4D; /* Electric Red */
+  color: white;
+}
+
+.park {
+  background-color: #4CAF50; /* Forest Green */
+  color: white;
 }
