@@ -1,11 +1,13 @@
+
 <!-- Show all curated places in a list -->
 <div class="container-fluid">
   <div class="row">
     <!-- Dropdown menu on the left side -->
     <div class="col-md-6">
       <form id="selectCat" action="/select-category" method="post"></form>
+
       <label for="categorySelect">Select Category:</label>
-      <select id="categorySelect" class="form-control">
+      <select id="categorySelect" class="form-control" name="selectedCategory">
         <option value="all">All Places</option>
         <option value="tourist">Like a real tourist</option>
         <option value="museum">Museum</option>
@@ -17,18 +19,20 @@
         <option value="shop">Shop till you drop</option>
         <option value="party">Where is a party at tonight?</option>
       </select>
-      </form>
 
-   
-
-
-  <!-- Handlebars will dynamically populate this list -->
-</ul>
 <div class ="row">
 <div class="col-md-4">
   <h2>Pick all your places</h2>
 <p>Click on the place to <strong>add</strong> them to your favorites</p>
   <ul class="places-list">
+{{#if foundPlaces}}
+ {{#each foundPlaces}}
+     <form action="/add-to-list" method="post">
+        <button type="submit" class="btn btn-dark"><li>{{name}}</li></button>
+        <input type="hidden" name="name" value="{{name}}" />
+      </form>
+      {{/each}}
+{{else}}
     {{#each places}}
       <li class="place">
         <form action="/add-to-list" method="post">
@@ -38,6 +42,8 @@
         </form>
         </li>
     {{/each}}
+
+    {{/if}}
   </ul>
 </p>
 </div>
@@ -45,6 +51,8 @@
 <h2>{{username}}'s' Berliest places</h2>
 <p>Click on the place to <strong>remove</strong> them from your Berliest</p>
 <ul class="favorites-list">
+
+
   {{#each favorites}}
     
       <form action="/remove-from-list" method="post">
@@ -54,7 +62,7 @@
       </form>
 
     
-  {{/each}}
+  {{/each}} 
 </ul>
 
 <!-- Save list form -->
@@ -71,6 +79,7 @@
   </form>
 </div>
 </div>
+
     <!-- Map on the right side -->
     <div class="col-md-4">
       <div id="map"></div>
@@ -79,3 +88,4 @@
 </div>
 <ul id="selectedPlaces" class="list-group">
 </div>
+

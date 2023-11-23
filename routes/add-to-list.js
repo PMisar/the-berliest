@@ -5,6 +5,71 @@ const FavoritePlace = require('../models/FavoritePlace.model');
 const path = require("path");
 const fs = require("fs");
 
+const Place = require("../models/Place.model");
+
+// PAVEL'S CODE USING POST REQUEST
+
+// router.post("/select-category", async (req, res, next) => {
+//   const selectedOption = req.body.selectedCategory;
+//   try {
+//     const foundPlaces = await Place.find({ category: selectedOption });
+
+//     await Promise.all(foundPlaces.map(async (place) => {
+//       place.selectedCategory.push(selectedOption);
+//       place.selectedCategory = [...new Set(place.selectedCategory)];
+//       await place.save();
+
+//       console.log({
+//         selectedCategory: place.selectedCategory,
+//         ...place.toObject(),
+//       });
+//     }));
+
+//     console.log("found places", foundPlaces);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
+// PAVEL'S CODE FINISH
+
+
+// BEFORE, WORKING
+// router.get("/select-category", async (req, res, next) => {
+//   const selectedOption = req.query.selectedCategory;
+//   console.log("WE ARE GETTING SELECTED CATEGORY FROM REQUEST", selectedOption)
+
+//   Place.find({ category: selectedOption })
+//     .then((response) => {
+//       console.log(response)
+
+//       res.render("create-list", {foundPlaces: response})
+//     }
+//     )
+//     .catch(() => {
+//       res.status(404).json({ errorMessage: "ERROR OCCURED WHILE FETCHING THE DATA" })
+//     })
+// });
+
+// AYKUT'S VERSION
+router.get("/select-category", async (req, res, next) => {
+  const selectedOption = req.query.selectedCategory;
+  console.log("WE ARE GETTING SELECTED CATEGORY FROM REQUEST", selectedOption);
+
+  try {
+    const user = await User.findById(req.session.currentUser._id);
+    const foundPlaces = await Place.find({ category: selectedOption });
+
+    res.render("create-list", {
+      foundPlaces: foundPlaces,
+      username: user.username,
+    });
+
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post("/add-to-list", (req, res) => {
   const { name } = req.body;
   console.log(req.body.name);
@@ -15,7 +80,7 @@ router.post("/add-to-list", (req, res) => {
     { new: true }
   )
     .then((user) => {
-      //   console.log(user.favoriteList);
+      //   console.log(user.favoriteList);
       res.redirect("create-list");
       // res.render("create-list", { favoriteList: user.favoriteList });
     })
@@ -69,11 +134,9 @@ router.get("/create-list", (req, res) => {
           places: filteredPlaces,
           favorites: favorites,
           username: user.username,
-        }); // Pass places data to the template
-        // res.send(places);
+          // selectedCategory: user.selectedCategory, // Pass the selectedCategory here
+        });
       });
-
-      //
     })
     .catch(() => {
       res.status(404).send("USER NOT FOUND");
@@ -106,7 +169,7 @@ router.get("/my-berliest", (req, res) => {
 
         res.render("my-berliest", {
           favorites: user.favoriteList,
-          coordinates: favoritesWithCoords,
+          coordinates: favoritesWithCoords
         });
       });
     })
