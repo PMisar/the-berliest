@@ -1,28 +1,44 @@
 <!-- my-berliest.hbs -->
-Favorite List
-{{!-- <ul id="favorites-omar">
-  {{#each favorites}}
-    <li>{{this}}</li>
-  {{/each}}
+<p class="my-berliest-text">🌟 Herzlich willkommen to your own slice of Berlin
+  bliss,
+  {{username}}! 🌈 Dive into the heart of the city with The Berliest, where your
+  favorite places come to life. Revisit cherished spots, plan your next Berlin
+  adventure, and chart your course with our seamless route-by-car or leisurely
+  stroll-by-foot options. Your map, your city, your Berliest—let the Berlin
+  magic unfold! 🗺️✨
+</p>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Favorites on the left -->
+    <div class="col-md-6">
+      <ul id="favorites">
+        {{#each coordinates}}
+          <button
+            class="place-btn {{this.category}}"
+            data-category="{{this.category}}"
+            data-lat="{{this.lat}}"
+            data-lon="{{this.lon}}"
+          >{{this.name}}</button>
+        {{/each}}
+      </ul>
+      <div id="directions-container"></div>
+    </div>
 
-  {{#each coordinates}}
-    <li>Name: {{this.name}}, Lat: {{this.lat}}, Lon: {{this.lon}}</li>
-  {{/each}}
-</ul> --}}
-
-<ul id="favorites">
-  {{#each coordinates}}
-    <button
-      data-lat="{{this.lat}}"
-      data-lon="{{this.lon}}"
-    >{{this.name}}</button>
-  {{/each}}
-</ul>
-
-<button id="showRouteBtn" class="btn btn-primary mt-2">
-  Show Route
-</button>
-
-<div class="col-md-6">
-  <div id="map"></div>
+    <!-- Map on the right -->
+    <div class="col-md-6">
+      <button id="showRouteBtn" class="btn btn-primary mt-2">Show Route</button>
+      <a href="#" id="carBtn">
+        <img src="/images/car_logo.png" alt="Car Button Image" />
+      </a>
+      <a href="#" id="bicycleBtn">
+        <img src="/images/bicycle_logo.png" alt="Bicycle Button Image" />
+      </a>
+      <a href="#" id="footBtn">
+        <img src="/images/foot_logo.png" alt="Foot Button Image" />
+      </a>
+      <div id="map"></div>
+      
+    </div>
+  </div>
 </div>
+<script src="/js/my-berliest-map.js"></script>
