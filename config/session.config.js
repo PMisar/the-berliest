@@ -1,5 +1,8 @@
 const session = require('express-session');
- 
+const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
+
+
 // since we are going to USE this middleware in the app.js,
 // let's export it and have it receive a parameter
 module.exports = app => {
@@ -20,11 +23,11 @@ module.exports = app => {
         sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
-        maxAge: 300000 // 60 * 1000 ms === 5 min
+        // maxAge: 60000 // 60 * 1000 ms === 5 min
       },
-      // store: MongoStore.create({
-      //   mongoUrl: process.env.MONGODB_URI
-      // })
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI
+      })
     })
   );
 };
