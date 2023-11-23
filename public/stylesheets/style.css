@@ -22,13 +22,16 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 12px;
 }
-
-p {
-  font-size: 12px;
+h1 {
+  font-size: 18px;
 }
 
-h3 {
-  font-size: 12px;
+h2 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 14px;
 }
 
 a {
@@ -41,25 +44,36 @@ h1 {
 
 #map {
   height: 380px;
-  margin-top:1%;
+  margin-top: 1%;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+}
+
+.place,
+.favorites {
+  display: inline-flex;
 }
 
 .btn.btn-dark,
 .btn.btn-dark:focus {
   padding: 6px 12px;
   color: white;
-  background-color: #680747;
-  border: 1px solid #680747;
+  background-color: #1f6f78;
   border-radius: 4px;
   box-shadow: none;
-  margin: 10px 10px;
+  margin: 1px 5px;
+}
+
+.place-btn {
+  padding: 6px 12px;
+  color: white;
+  border-radius: 4px;
+  box-shadow: none;
+  margin: 5px 5px;
 }
 
 .btn.btn-dark.cta {
@@ -68,7 +82,7 @@ ul {
   background-color: #f70776;
   border: 1px solid #f70776;
   border-radius: 4px;
-  margin: 20px 5px;
+  margin: 10px 5px;
 }
 
 .btn.btn-dark.selected {
@@ -77,29 +91,6 @@ ul {
   background-color: #c3195d;
   border: 1px solid #c3195d;
   border-radius: 4px;
-}
-
-
-.my-berliest-text{
-  margin-left:1%;
-  margin-right:1%;
-}
-
-button {
-  background-color:#44BFC8;
-  border-color: #44BFC8;
-}
-
-#showRouteBtn{
-  background-color: #008080; /* Teal */
-  color: white;
-  border-color: #008080;
-}
-
-.place-btn {
-  /* Common styles for all buttons */
-  padding: 5px;
-  margin: 5px;
 }
 
 /* test */
@@ -117,58 +108,74 @@ button {
   cursor: pointer;
 }
 
+.directions-container {
+  font-size: 12px;
+}
 
+.circle {
+  box-shadow: black 0px 0px 0px 1px;
+  opacity: 1;
+}
 /* Category-specific styles */
 .breluncoffee {
-  background-color: #FFC72C; /* Sunny Yellow */
+  background-color: #1f6f78; /* Sunny Yellow */
   color: white;
+  border: 1px solid #1f6f78;
 }
 
 .bar {
-  background-color: #FF4D9E; /* Coral Orange */
+  background-color: #2a7a7f; /* Coral Orange */
   color: white;
+  border: 1px solid #2a7a7f;
 }
 
 .shop {
-  background-color: #FF6F61; /* Fuchsia Pink */
+  background-color: #358586; /* Fuchsia Pink */
   color: white;
+  border: 1px solid #358586;
 }
 
 .exhibition {
-  background-color: #8A4D76; /* Bright Purple */
+  background-color: #40908d; /* Bright Purple */
   color: white;
+  border: 1px solid #40908d;
 }
 
 .restaurant {
-  background-color: #44BFC8; /* Turquoise Blue */
+  background-color: #4b9c94; /* Turquoise Blue */
   color: white;
+  border: 1px solid #4b9c94;
 }
 
 .tourist {
-  background-color: #FF4D9E; /* Coral Orange */
+  background-color: #56a79b; /* Coral Orange */
   color: white;
+  border: 1px solid #56a79b;
 }
 
 .club {
-  background-color: #A4DE02; /* Lime Green */
+  background-color: #61b2a2; /* Lime Green */
   color: white;
+  border: 1px solid #61b2a2;
 }
 
 .museum {
-  background-color: #FF3E4D; /* Electric Red */
+  background-color: #6cbda9; /* Electric Red */
   color: white;
+  border: 1px solid #6cbda9;
 }
 
 .park {
-  background-color: #4CAF50; /* Forest Green */
+  background-color: #77c8b0; /* Forest Green */
   color: white;
+  border: 1px solid #77c8b0;
 }
 
 .dropdown-menu {
   display: none;
   position: absolute;
   background-color: #fff;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
