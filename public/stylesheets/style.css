@@ -96,6 +96,7 @@ span {
   margin: 10px 5px;
 }
 
+
 .place-btn.selected {
   padding: 6px 12px;
   color: white;
@@ -117,6 +118,7 @@ span {
   border: none;
   cursor: pointer;
 }
+
 
 .directions-container {
   font-size: 12px;
@@ -194,4 +196,70 @@ span {
   padding: 10px;
   border: none;
   outline: none;
+}
+
+#login-form {
+    max-width: 400px; 
+    width: 100%;
+    margin-top: 70px;
+  }
+
+  #signup-form {
+    max-width: 400px; 
+    width: 100%;
+    margin-top: 70px;
+  }
+
+  #login-form button {
+    padding: 6px 12px;
+    color: white;
+    background-color: #F70776;
+    border: 1px solid #F70776;
+    border-radius: 4px;
+    margin: 20px 5px;
+
+  }
+
+  #signup-form button {
+    padding: 6px 12px;
+    color: white;
+    background-color: #F70776;
+    border: 1px solid #F70776;
+    border-radius: 4px;
+    margin: 20px 5px;
+  }
+
+  #signup-form h2 {
+    white-space: nowrap;
+  }
+
+  #signup-form p {
+    white-space: nowrap;
+  }
+
+  /* for the heart shaped image */
+  .custom-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo-img {
+    width: 16px; 
+    height: 16px; 
+    margin-right: 5px; 
+    margin-bottom: 6px;
+  }
+
+  .brand-text {
+    color: white;
+    text-decoration: none;
+  }
+
+  
+  
+  .navbar-brand:hover,
+  .navbar-brand:focus {
+  color: white;
+  text-decoration: none;
 }
