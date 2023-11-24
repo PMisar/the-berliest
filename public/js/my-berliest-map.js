@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedPlaces = []; // Move this outside the loop
   let routePolyline;
-  let selectedProfile = "car";
+  let selectedProfile = "foot";
 
   favorites.addEventListener("click", (event) => {
     const fav = event.target;

@@ -6,34 +6,27 @@ body {
 h1 {
   font-size: 18px;
 }
-
 h2 {
   font-size: 16px;
 }
-
 p {
   font-size: 14px;
 }
-
 a.brand-text {
   color: white;
 }
-
 h1 {
   color: 15px;
 }
-
 #map {
   height: 380px;
   margin-top: 1%;
 }
-
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
 span {
   font-size: 8px;
   line-height: -2em;
@@ -49,28 +42,24 @@ span {
   flex-direction: column;
   align-items: center;
 }
-
 .place,
 .favorites {
   display: inline-flex;
   line-height: 1em;
 }
-
 .btn.btn-dark,
 .btn.btn-dark:focus {
   padding: 6px 12px;
   color: white;
-  background-color: #1f6f78;
+  background-color: #1F6F78;
   border-radius: 4px;
   box-shadow: none;
   margin: 1px 5px;
 }
-
 .btn.btn-dark.info {
   line-height: 0.5em;
   padding: 7px 12px;
 }
-
 .place-btn {
   padding: 6px 12px;
   color: white;
@@ -78,101 +67,85 @@ span {
   box-shadow: none;
   margin: 5px 5px;
 }
-
 .btn.btn-dark.cta {
   padding: 6px 12px;
   color: white;
-  background-color: #f70776;
-  border: 1px solid #f70776;
+  background-color: #F70776;
+  border: 1px solid #F70776;
   border-radius: 4px;
   margin: 10px 5px;
 }
-
 .place-btn.selected {
   padding: 6px 12px;
   color: white;
   opacity: 0.4;
   border-radius: 4px;
 }
-
 /* test */
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown button {
   background-color: #333;
   color: #fff;
   padding: 10px;
-
   border: none;
   cursor: pointer;
 }
-
 .directions-container {
   font-size: 12px;
 }
-
 .circle {
   box-shadow: black 0px 0px 0px 1px;
   opacity: 1;
 }
 /* Category-specific styles */
 .cafe {
-  background-color: #1f6f78; /* Sunny Yellow */
+  background-color: #1F6F78; /* Sunny Yellow */
   color: white;
-  border: 1px solid #1f6f78;
+  border: 1px solid #1F6F78;
 }
-
 .bar {
-  background-color: #2a7a7f; /* Coral Orange */
+  background-color: #2A7A7F; /* Coral Orange */
   color: white;
-  border: 1px solid #2a7a7f;
+  border: 1px solid #2A7A7F;
 }
-
 .shop {
   background-color: #358586; /* Fuchsia Pink */
   color: white;
   border: 1px solid #358586;
 }
-
 .exhibition {
-  background-color: #40908d; /* Bright Purple */
+  background-color: #40908D; /* Bright Purple */
   color: white;
-  border: 1px solid #40908d;
+  border: 1px solid #40908D;
 }
-
 .restaurant {
-  background-color: #4b9c94; /* Turquoise Blue */
+  background-color: #4B9C94; /* Turquoise Blue */
   color: white;
-  border: 1px solid #4b9c94;
+  border: 1px solid #4B9C94;
 }
-
 .tourist {
-  background-color: #56a79b; /* Coral Orange */
+  background-color: #56A79B; /* Coral Orange */
   color: white;
-  border: 1px solid #56a79b;
+  border: 1px solid #56A79B;
 }
-
 .club {
-  background-color: #61b2a2; /* Lime Green */
+  background-color: #61B2A2; /* Lime Green */
   color: white;
-  border: 1px solid #61b2a2;
+  border: 1px solid #61B2A2;
 }
-
 .museum {
-  background-color: #6cbda9; /* Electric Red */
+  background-color: #6CBDA9; /* Electric Red */
   color: white;
-  border: 1px solid #6cbda9;
+  border: 1px solid #6CBDA9;
 }
-
 .park {
-  background-color: #77c8b0; /* Forest Green */
+  background-color: #77C8B0; /* Forest Green */
   color: white;
-  border: 1px solid #77c8b0;
+  border: 1px solid #77C8B0;
 }
-
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -180,73 +153,86 @@ span {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
-
 .dropdown-menu select {
   width: 100%;
   padding: 10px;
   border: none;
   outline: none;
 }
-
 #login-form {
   max-width: 400px;
   width: 100%;
   margin-top: 70px;
 }
-
 #signup-form {
   max-width: 400px;
   width: 100%;
   margin-top: 70px;
 }
-
 #login-form button {
   padding: 6px 12px;
   color: white;
-  background-color: #f70776;
-  border: 1px solid #f70776;
+  background-color: #F70776;
+  border: 1px solid #F70776;
   border-radius: 4px;
   margin: 20px 5px;
 }
-
 #signup-form button {
   padding: 6px 12px;
   color: white;
-  background-color: #f70776;
-  border: 1px solid #f70776;
+  background-color: #F70776;
+  border: 1px solid #F70776;
   border-radius: 4px;
   margin: 20px 5px;
 }
-
 #signup-form h2 {
   white-space: nowrap;
 }
-
 #signup-form p {
   white-space: nowrap;
 }
-
 /* for the heart shaped image */
 .custom-brand {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .logo-img {
   width: 16px;
   height: 16px;
   margin-right: 5px;
   margin-bottom: 6px;
 }
-
 a.brand-text:hover {
   color: white;
   text-decoration: none;
 }
-
 .navbar-brand:hover,
 .navbar-brand:focus {
   color: white;
   text-decoration: none;
+}
+
+.text-left.text-white.footer-left-text {
+  color: white;
+  font-size: 13px; 
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+.bw-img {
+  filter: grayscale(100%);
+}
+
+.col-lg-6 p {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#map-container {
+  margin-bottom: 5%;
+}
+
+#places-container {
+  margin-bottom: 10%;
 }
