@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const lat = parseFloat(fav.dataset.lat);
     const lon = parseFloat(fav.dataset.lon);
     const category = fav.dataset.category;
+    const description = fav.dataset.description;
+    const tag = fav.dataset.tag;
+    const neighborhood = fav.dataset.neighborhood;
 
     console.log(fav.dataset);
 
@@ -71,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const marker = L.marker([lat, lon], { icon: customIcon })
           .addTo(map)
           .bindPopup(
-            `Name: ${name}<br>Lat: ${lat}<br>Lon: ${lon}<br>Category:${category}`
+            `Name: ${name}<br>Tag: ${tag}<br>Category: ${category}<br>Neighborhood: ${neighborhood}<br>Description: ${description}`
           );
         // Add the selected place to the array
         selectedPlaces.push({ name, lat, lon, marker });

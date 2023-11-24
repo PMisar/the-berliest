@@ -115,6 +115,9 @@ router.get("/my-berliest", (req, res) => {
             lat: place ? place.lat : null,
             lon: place ? place.lon : null,
             category: place ? place.category : null,
+            tag: place ? place.tag : null,
+            neighborhood: place ? place.neighborhood : null,
+            description: place ? place.description : null,
           };
         });
 
