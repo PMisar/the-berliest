@@ -3,6 +3,7 @@
 ## License: MIT
 
 ## Table of Contents
+
 - [The Berliest App](#the-berliest-app)
   - [License: MIT](#license-mit)
   - [Table of Contents](#table-of-contents)
@@ -26,18 +27,22 @@
 ### Key Features
 
 1. **User Authentication and Authorization:**
+
    - Implementation of secure user signup, login, and logout functionality.
    - Passwords are encrypted using bcrypt during registration.
    - Basic authorization ensures that only logged-in users can access additional features.
 
 2. **List Management:**
+
    - Enable users to seamlessly create, read, update, and delete lists.
    - Implementation of basic CRUD operations for the efficient management of lists containing favorite places.
 
 3. **Map Integration:**
+
    - Seamless integration of the Graphhopper API to visualize routes on an interactive map.
 
 4. **Basic User Profile:**
+
    - Development of an elegant user profile page showcasing users' favorite locations.
    - Users can effortlessly choose places from predefined categories, saving them to their list of favorites. Additionally, these locations can be visualized on the map with routes available for walking, biking, or driving.
 

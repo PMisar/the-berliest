@@ -368,8 +368,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     ];
     places.forEach((place) => {
-      const { name, lat, lon, category, tag, description, neighborhood } =
-        place;
+      const { name, lat, lon, category, tag, description, neighborhood} = place;
       function getIconHtml(category) {
         switch (category) {
           case "cafe":
