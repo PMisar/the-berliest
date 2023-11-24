@@ -1,11 +1,24 @@
 
 <!-- Show all curated places in a list -->
 <div class="container-fluid">
+ <div class="row">
+    <div class="col-lg-6">
+      <h1 class="ml-4 mt-4">Hello
+        {{username}}!</h1>
+      <p class="ml-4 my-3">
+        We can imagine you're very excited to experience Berlin at its fullest.
+        That's why we made it easier for you to create your 'ways' to your
+        favorite places in Berlin. Berlin is the perfect city for a biketour to
+        all the touristic highlights, a pubcrawl, a shopping spree or a museum
+        tour. And ofcourse, Berlin is famous for it's clublife.
+      </p></div>
+  </div>
+
   <div class="row">
     <!-- Dropdown menu on the left side -->
-    
+    <div class="col-lg-6 mt-2 mb-4 ml-4">
       <form id="selectCat" action="/create-list" method="get">
-        <label for="category">Select Category:</label>
+        <h3>Select category:</h3>
         <select id="category" class="form-control" name="category" onchange='if(this.value != 0) { this.form.submit(); }'>
           {{#if category}}
           <option value={{category}} selected >{{category}}</option>          
@@ -15,54 +28,64 @@
           {{/each}}
         </select>
       </form>
+      </div>
 </div>
 
       <!-- Handlebars will dynamically populate this list -->
  
-      <div class="row">
-        <div class="col-3">
-          <h2>Pick all your places</h2>
+<div class="row">
+
+
+        <div class="col-lg-3 ml-4">
+          <h3>Pick all your places</h3>
           <p>Click on the place to <strong>add</strong> them to your favorites</p>
-          <ul class="places-list">
+          <div class="places-list" >
             {{#each places}}
-            <li class="place">
+            <div class="place">
               <form action="/add-to-list" method="post">
                 <input type="hidden" name="name" value="{{this.name}}" />
                 <input type="hidden" id="category" name="category" value="{{../category}}" />
-                <button type="submit" class="btn btn-dark">
-                  {{this.name}}</button>
+                <button type="submit" class="btn btn-dark info {{this.category}}">
+                  {{this.name}}<br><br><span>{{this.category}}</span></button>
               </form>
-            </li>
+            </div>
             {{/each}}
-          </ul>
-          </p>
+          </div>
+  
         </div>
-        <div class="col-3">
-          <h2>{{username}}'s' Berliest places</h2>
-          <p>Click on the place to <strong>remove</strong> them from your Berliest</p>
-          <ul class="favorites-list">
-            {{#each favorites}}
 
+
+        <div class="col-lg-3">
+          <h3>{{username}}'s' Berliest places</h3>
+          <p>Click on the place to <strong>remove</strong> them from your Berliest</p>
+
+          <div class="favorites-list">
+            {{#each favorites}}
+            <div class="favorites">
             <form action="/remove-from-list" method="post">
-              <button type="submit" class="btn btn-dark">
-                <li>{{this}}</li>
-              </button>
                <input type="hidden" id="category" name="category" value="{{../category}}" />
               <input type="hidden" name="name" value="{{this}}" />
-
+              <button type="submit" class="btn btn-dark" id="favoriteplace">
+                {{this}}
+              </button>
             </form>
+      </div>
+      {{/each}}
+      </div>
+    </div>
+          
 
-
-            {{/each}}
-          </ul>
-</div>
     <!-- Map on the right side -->
-    <div class="col-md-6">
+    <div class="col-lg-5 ">
+      <h3>The best of Berlin</h3>
       <div id="map"></div>
+       <a href="my-berliest"><button class="btn btn-dark cta">
+        Create your route
+      </button></a></div>
     </div>
   </div>
 </div>
-<ul id="selectedPlaces" class="list-group">
+
 </div>
 
 <script src="/js/create-list-map.js"></script>

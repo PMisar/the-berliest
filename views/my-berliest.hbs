@@ -1,17 +1,21 @@
-<!-- my-berliest.hbs -->
-<p class="my-berliest-text">🌟 Herzlich willkommen to your own slice of Berlin
-  bliss,
-  {{username}}! 🌈 Dive into the heart of the city with The Berliest, where your
-  favorite places come to life. Revisit cherished spots, plan your next Berlin
-  adventure, and chart your course with our seamless route-by-car or leisurely
-  stroll-by-foot options. Your map, your city, your Berliest—let the Berlin
-  magic unfold! 🗺️✨
-</p>
 <div class="container-fluid">
   <div class="row">
-    <!-- Favorites on the left -->
-    <div class="col-md-6">
-      <ul id="favorites">
+    <div class="col-lg-4 ml-4 mt-4">
+      <h1>Hello
+        {{username}}!</h1>
+      <p>
+        This is where you go wild on all your personal tours you'd like to make
+        in Berlin. Click on the places you want to add or remove to your route.
+        When you're done, click on Show Route to see your route on the map. Have
+        fun!
+      </p></div>
+  </div>
+
+  <div class="row mt-3">
+
+    <div class="col-lg-4 ml-4">
+      <h2>My Berliest' favorites</h2>
+      <div class="mb-3" id="favorites">
         {{#each coordinates}}
           <button
             class="place-btn {{this.category}}"
@@ -20,25 +24,37 @@
             data-lon="{{this.lon}}"
           >{{this.name}}</button>
         {{/each}}
-      </ul>
-      <div id="directions-container"></div>
+      </div>
+      <div class="mt-5">
+        <h3>Wanna change your Berliest?</h3>
+        <p>
+          Click on the button below to change your Berliest.
+        </p>
+        <a href="create-list"><button class="btn btn-dark cta">
+            Change my Berliest
+          </button></a>
+      </div>
     </div>
 
     <!-- Map on the right -->
-    <div class="col-md-6">
-      <button id="showRouteBtn" class="btn btn-primary mt-2">Show Route</button>
-      <a href="#" id="carBtn">
+    <div class="col-md-7">
+      <button id="showRouteBtn" class="btn btn-dark cta">Show Route</button>
+      {{! <a href="#" id="carBtn">
         <img src="/images/car_logo.png" alt="Car Button Image" />
       </a>
       <a href="#" id="bicycleBtn">
         <img src="/images/bicycle_logo.png" alt="Bicycle Button Image" />
-      </a>
+      </a> }}
       <a href="#" id="footBtn">
         <img src="/images/foot_logo.png" alt="Foot Button Image" />
       </a>
       <div id="map"></div>
-      
     </div>
+  </div>
+
+  <div class="row">
+    {{! <h3>Directions</h3> }}
+    <div id="directions-container" class="col-lg-8 ml-4"></div>
   </div>
 </div>
 <script src="/js/my-berliest-map.js"></script>
