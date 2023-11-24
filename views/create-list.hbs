@@ -45,8 +45,8 @@
               <form action="/add-to-list" method="post">
                 <input type="hidden" name="name" value="{{this.name}}" />
                 <input type="hidden" id="category" name="category" value="{{../category}}" />
-                <button type="submit" class="btn btn-dark">
-                  {{this.name}}</button>
+                <button type="submit" class="btn btn-dark info {{this.category}}">
+                  {{this.name}}<br><br><span>{{this.category}}</span></button>
               </form>
             </div>
             {{/each}}

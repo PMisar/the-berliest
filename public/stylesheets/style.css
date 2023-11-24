@@ -53,9 +53,15 @@ ul {
   padding: 0;
 }
 
+span {
+  font-size: 8px;
+  line-height: -2em;
+}
+
 .place,
 .favorites {
   display: inline-flex;
+  line-height: 1em;
 }
 
 .btn.btn-dark,
@@ -66,6 +72,11 @@ ul {
   border-radius: 4px;
   box-shadow: none;
   margin: 1px 5px;
+}
+
+.btn.btn-dark.info {
+  line-height: 0.5em;
+  padding: 7px 12px;
 }
 
 .place-btn {
@@ -85,11 +96,10 @@ ul {
   margin: 10px 5px;
 }
 
-.btn.btn-dark.selected {
+.place-btn.selected {
   padding: 6px 12px;
   color: white;
-  background-color: #c3195d;
-  border: 1px solid #c3195d;
+  opacity: 0.4;
   border-radius: 4px;
 }
 
