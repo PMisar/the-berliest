@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(mapMyBerliest);
   try {
-    const places = [
+   const places = [
       {
         name: "Stilbruch Kaffee",
         category: "cafe",
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     ];
     places.forEach((place) => {
-      const { name, lat, lon, category, tag, description, neighborhood } = place;
+      const { name, lat, lon, category } = place;
       function getIconHtml(category) {
         switch (category) {
           case "cafe":
